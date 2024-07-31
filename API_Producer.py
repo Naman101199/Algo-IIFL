@@ -1,8 +1,20 @@
+import logging
 from Connect import XTSConnect
 from datetime import datetime
 from MarketDataSocketClient import MDSocket_io
 from config import configuration
 from confluent_kafka import Producer
+
+# Configure logging to log to both console and file
+todays_date = str(datetime.today().date()).replace('-','_')
+log_file = f'logs/market_data_{todays_date}.log'
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    handlers=[
+                        logging.FileHandler(log_file),
+                        logging.StreamHandler()
+                    ])
+logger = logging.getLogger(__name__)
 
 API_KEY = configuration['API_KEY']
 API_SECRET = configuration['API_SECRET']
@@ -21,9 +33,9 @@ producer = Producer(kafka_config)
 # Function to delivery callback
 def delivery_report(err, msg):
     if err is not None:
-        print(f'Message delivery failed: {err}')
+        logger.error(f'Message delivery failed: {err}')
     else:
-        print(f'Message delivered to {msg.topic()} [{msg.partition()}]')
+        logger.info(f'Message delivered to {msg.topic()} [{msg.partition()}]')
 
 # Function to produce messages to Kafka
 def produce_to_kafka(topic, value):
@@ -50,32 +62,30 @@ Instruments = [
 # Callback for connection
 def on_connect():
     """Connect from the socket."""
-    print('Market Data Socket connected successfully!')
+    logger.info('Market Data Socket connected successfully!')
 
     # Subscribe to instruments
-    # print('Sending subscription request for Instruments - \n' + str(Instruments))
     response = xt.send_subscription(Instruments, 1501)
-    # print('Sent Subscription request!')
-    # print("Subscription response: ", response)
+    logger.info("Subscription response: %s", response)
 
 # Callback on receiving message
 def on_message(data):
-    print('I received a message!')
+    logger.info('I received a message!')
     produce_to_kafka(topic_name, str(data))
 
 # Callback for message code 1502 FULL
 def on_message1501_json_partial(data):
-    print('I received a 1501 Touchline message!')
+    logger.info('I received a 1501 Touchline message!')
     produce_to_kafka(topic_name, str(data))
 
 # Callback for disconnection
 def on_disconnect():
-    print('Market Data Socket disconnected!')
+    logger.warning('Market Data Socket disconnected!')
 
 # Callback for error
 def on_error(data):
     """Error from the socket."""
-    print('Market Data Error', data)
+    logger.error('Market Data Error: %s', data)
 
 # Assign the callbacks
 soc.on_connect = on_connect
