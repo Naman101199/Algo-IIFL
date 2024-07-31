@@ -1,4 +1,3 @@
-# from XTConnect import XTSConnect
 from Connect import XTSConnect
 from datetime import datetime
 from MarketDataSocketClient import MDSocket_io
@@ -65,7 +64,7 @@ def on_message(data):
     produce_to_kafka(topic_name, str(data))
 
 # Callback for message code 1502 FULL
-def on_message1501_json_full(data):
+def on_message1501_json_partial(data):
     print('I received a 1501 Touchline message!')
     produce_to_kafka(topic_name, str(data))
 
@@ -81,14 +80,14 @@ def on_error(data):
 # Assign the callbacks
 soc.on_connect = on_connect
 soc.on_message = on_message
-soc.on_message1501_json_full = on_message1501_json_full
+soc.on_message1501_json_partial = on_message1501_json_partial
 soc.on_disconnect = on_disconnect
 soc.on_error = on_error
 
 # Event listener
 el = soc.get_emitter()
 el.on('connect', on_connect)
-el.on('1501-json-full', on_message1501_json_full)
+el.on('1501-json-partial', on_message1501_json_partial)
 
 # Infinite loop on the main thread. Nothing after this will run.
 # You have to use the pre-defined callbacks to manage subscriptions.

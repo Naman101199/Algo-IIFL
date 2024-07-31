@@ -1,0 +1,73 @@
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import from_json, col
+from pyspark.sql.types import StructType, StructField, IntegerType, DoubleType, StringType, LongType, TimestampType
+from config import configuration
+
+def main():
+
+    schema = StructType([
+        StructField("t", StringType(), False),        # Exchangesegment_ExchangeInstrumentID(exchange segment enum with underscore along with instumentID of the particular subscribed instrument)
+        StructField("ltp", DoubleType(), False),      # Last traded price
+        StructField("ltq", LongType(), False),        # Last traded quantity
+        StructField("tb", LongType(), False),         # Total buy quantity
+        StructField("ts", LongType(), False),         # Total sell quantity
+        StructField("v", LongType(), False),          # The volume is commonly reported as the number of shares that changed hands during a given day
+        StructField("ap", DoubleType(), False),       # Average Traded Price
+        StructField("ltt", TimestampType(), False),   # Last Traded Time
+        StructField("lut", TimestampType(), False),   # Last Update Time
+        StructField("pc", DoubleType(), False),       # Percent Change
+        StructField("o", DoubleType(), False),        # Open
+        StructField("h", DoubleType(), False),        # High
+        StructField("l", DoubleType(), False),        # Low
+        StructField("c", DoubleType(), False),        # Close
+        StructField("vp", DoubleType(), False),       # Total price volume
+        StructField("ai", StringType(), False),       # Ask Info(Ask Size Index+'|'+Ask Price +'|'+ Ask TotalOrders)
+        StructField("bi", StringType(), False)        # Bid Info(Bid Size Index+'|'+ Bid Price +'|'+Bid TotalOrders)
+    ])
+
+    spark = SparkSession.builder \
+        .appName('SparkDataStreaming') \
+        .config('spark.jars.packages', 
+        "org.apache.spark:spark-sql-kafka-0-10_2.13:3.5.1",
+        "org.apache.hadoop:hadoop-aws:3.3.1",
+        "com.amazonaws:aws-java-sdk:1.11.469") \
+        .config('spark.hadoop.fs.s3a.impl', 'org.apache.hadoop.fs.s3a.S3AFileSystem') \
+        .config("spark.hadoop.fs.s3a.access.key", configuration.get('AWS_ACCESS_KEY'))\
+        .config("spark.hadoop.fs.s3a.secret.key", configuration.get('AWS_SECRET_KEY'))\
+        .config("spark.hadoop.fs.s3a.credentials.provider", "org.apache.hadoop.f3.s3a.impl.SimpleAWSCredentialProvider")\
+        .getOrCreate()
+
+    spark.sparkContext.setLogLevel("WARN")
+
+
+    def read_kafka_topic(topic, schema):
+
+        spark_df = spark.readStream \
+            .format('kafka') \
+            .option('kafka.bootstrap.servers', 'broker:29092') \
+            .option('subscribe', topic) \
+            .option('startingOffsets', 'earliest') \
+            .load()\
+            .selectExpr("CAST(value AS STRING)")\
+            .select(from_json(col('value'), schema).alias('data'))\
+            .select("data.*")\
+            .withWatermark('timestamp', '5 minutes')
+
+        return spark_df
+
+    def streamWriter(input, checkpointFolder, output):
+        return (input.writeStream\
+            .format('parquet')\
+                .option('checkpointLocation', checkpointFolder)\
+                    .option('path', output)\
+                        .outputMode('append')\
+                            .start())
+
+
+    tickerDf = read_kafka_topic('market_data_topic', schema).alias('market')
+    streaming_query = streamWriter(tickerDf, 's3a://algo-iifl/checkpoints/tick_data', 's3a://algo-iifl/data')
+    streaming_query.awaitTermination()
+
+
+if __name__ == "__main__":
+    main()
