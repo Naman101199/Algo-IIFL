@@ -126,65 +126,65 @@ class MDSocket_io(socketio.Client):
 
     def on_message(self, data):
         """On receiving message"""
-        print('I received a message!' + data)
+        # print('I received a message!' + data)
 
     def on_message1502_json_full(self, data):
         """On receiving message code 1502 full"""
-        print('I received a 1502 Market depth message!' + data)
+        # print('I received a 1502 Market depth message!' + data)
 
     def on_message1507_json_full(self, data):
         """On receiving message code 1507 full"""
-        print('I received a 1507 MarketStatus message!' + data)
+        # print('I received a 1507 MarketStatus message!' + data)
         
     def on_message1512_json_full(self, data):
         """On receiving message code 1512 full"""
-        print('I received a 1512 LTP message!' + data)     
+        # print('I received a 1512 LTP message!' + data)     
 
     def on_message1505_json_full(self, data):
         """On receiving message code 1505 full"""
-        print('I received a 1505 Candle data message!' + data)
+        # print('I received a 1505 Candle data message!' + data)
 
     def on_message1105_json_full(self, data):
         """On receiving message code 1105 full"""
-        print('I received a 1105 Instrument Property Change Event message!' + data)
+        # print('I received a 1105 Instrument Property Change Event message!' + data)
 
     def on_message1510_json_full(self, data):
         """On receiving message code 1510 full"""
-        print('I received a 1510 Open interest message!' + data)
+        # print('I received a 1510 Open interest message!' + data)
 
     def on_message1501_json_full(self, data):
         """On receiving message code 1501 full"""
-        print('I received a 1501 Level1,Touchline message!' + data)
+        # print('I received a 1501 Level1,Touchline message!' + data)
 
     def on_message1502_json_partial(self, data):
         """On receiving message code 1502 partial"""
-        print('I received a 1502 partial message!' + data)
+        # print('I received a 1502 partial message!' + data)
     
     def on_message1512_json_partial(self, data):
         """On receiving message code 1512 partial"""
-        print('I received a 1512 LTP message!' + data)
+        # print('I received a 1512 LTP message!' + data)
 
     def on_message1505_json_partial(self, data):
         """On receiving message code 1505 partial"""
-        print('I received a 1505 Candle data message!' + data)
+        # print('I received a 1505 Candle data message!' + data)
 
     def on_message1510_json_partial(self, data):
         """On receiving message code 1510 partial"""
-        print('I received a 1510 Open interest message!' + data)
+        # print('I received a 1510 Open interest message!' + data)
 
     def on_message1501_json_partial(self, data):
         """On receiving message code 1501 partial"""
         now = datetime.now()
         today = now.strftime("%H:%M:%S")
-        print(today, 'in main 1501 partial Level1,Touchline message!' + data + ' \n')
+        # print(today, 'in main 1501 partial Level1,Touchline message!' + data + ' \n')
 
     def on_message1105_json_partial(self, data):
         """On receiving message code 1105 partial"""
         now = datetime.now()
         today = now.strftime("%H:%M:%S")
-        print(today, 'in main 1105 partial, Instrument Property Change Event!' + data + ' \n')
+        # print(today, 'in main 1105 partial, Instrument Property Change Event!' + data + ' \n')
 
-        print('I received a 1105 Instrument Property Change Event!' + data)
+        # print('I received a 1105 Instrument Property Change Event!' + data)
 
     def on_disconnect(self):
         """Disconnected from the socket"""

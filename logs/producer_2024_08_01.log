@@ -1,0 +1,447 @@
+2024-08-01 12:57:50,240 - engineio.client - INFO - Attempting WebSocket connection to wss://ttblaze.iifl.com/apimarketdata/socket.io/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJQRUdBU1VTQ18xZjQ0MDgzMGFmMWQ4MmE3YTA5MjUxIiwicHVibGljS2V5IjoiMWY0NDA4MzBhZjFkODJhN2EwOTI1MSIsImlhdCI6MTcyMjUzNTA3MCwiZXhwIjoxNzIyNjIxNDcwfQ.1L8OvqNjKDpWKLBLZ2tZ7mkaoeEpoNppUypEUBYNDjE&userID=PEGASUSC&publishFormat=JSON&broadcastMode=Partial&transport=websocket&EIO=3
+2024-08-01 12:57:51,468 - engineio.client - INFO - WebSocket connection accepted with {'sid': 'AvxP_WgF3f5B0I4RABSA', 'upgrades': [], 'pingInterval': 20000, 'pingTimeout': 60000}
+2024-08-01 12:57:51,468 - socketio.client - INFO - Engine.IO connection established
+2024-08-01 12:57:51,468 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 12:57:51,469 - engineio.client - INFO - Received packet MESSAGE data 0
+2024-08-01 12:57:51,469 - socketio.client - INFO - Namespace / is connected
+2024-08-01 12:57:51,470 - __main__ - INFO - Market Data Socket connected successfully!
+2024-08-01 12:57:51,470 - engineio.client - INFO - Received packet MESSAGE data 2["joined","{\"type\":\"success\",\"code\":\"s-socket-0001\",\"description\":\"Socket joined successfully! SocketId=AvxP_WgF3f5B0I4RABSA\"}"]
+2024-08-01 12:57:51,471 - socketio.client - INFO - Received event "joined" [/]
+2024-08-01 12:57:51,771 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 12:57:52,693 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_2885,ltp:3030.6,ltq:6,tb:1647,ts:0,v:5382111,ap:3025.49,ltt:1406995181,lut:1406995181,pc:0,o:3024,h:3036,l:3008.6,c:3030.6,bt:1,mt:1,ai:0|0|0|0,bi:0|1647|3030.6|21"]
+2024-08-01 12:57:52,694 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 12:57:52,698 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_26000,ltp:25010.9,ltq:0,tb:0,ts:0,v:0,ap:25010.9,ltt:1407004298,lut:1407004298,pc:0.24,o:25030.95,h:25078.3,l:24956.4,c:25010.9,bt:1,mt:1,ai:0|0|0|0,bi:0|0|0|0"]
+2024-08-01 12:57:52,699 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 12:57:53,046 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 12:57:53,046 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:57:53,051 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 12:57:53,052 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:57:53,052 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 12:57:53,053 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:57:53,053 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 12:57:53,054 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:03,548 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 12:58:03,550 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:03,551 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 12:58:03,551 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:03,552 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 12:58:03,552 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:03,552 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 12:58:03,553 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:11,474 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 12:58:11,840 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 12:58:12,919 - engineio.client - INFO - Sending packet CLOSE data None
+2024-08-01 12:58:12,920 - socketio.client - INFO - Engine.IO connection dropped
+2024-08-01 12:58:12,921 - engineio.client - INFO - Exiting write loop task
+2024-08-01 12:58:13,282 - engineio.client - INFO - Received packet NOOP data None
+2024-08-01 12:58:13,283 - engineio.client - INFO - Waiting for write loop task to end
+2024-08-01 12:58:13,283 - engineio.client - INFO - Waiting for ping loop task to end
+2024-08-01 12:58:13,283 - engineio.client - INFO - Exiting ping task
+2024-08-01 12:58:13,284 - engineio.client - INFO - Exiting read loop task
+2024-08-01 12:58:28,739 - engineio.client - INFO - Attempting WebSocket connection to wss://ttblaze.iifl.com/apimarketdata/socket.io/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJQRUdBU1VTQ18xZjQ0MDgzMGFmMWQ4MmE3YTA5MjUxIiwicHVibGljS2V5IjoiMWY0NDA4MzBhZjFkODJhN2EwOTI1MSIsImlhdCI6MTcyMjUzNTEwOCwiZXhwIjoxNzIyNjIxNTA4fQ.1CUjxVd8HLOHdNa9mFWZkXw-0PJGEBoitxs4HisNhv8&userID=PEGASUSC&publishFormat=JSON&broadcastMode=Partial&transport=websocket&EIO=3
+2024-08-01 12:58:29,845 - engineio.client - INFO - WebSocket connection accepted with {'sid': 'x8TQjGhll8j9kcy7ABSB', 'upgrades': [], 'pingInterval': 20000, 'pingTimeout': 60000}
+2024-08-01 12:58:29,845 - socketio.client - INFO - Engine.IO connection established
+2024-08-01 12:58:29,846 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 12:58:29,848 - engineio.client - INFO - Received packet MESSAGE data 0
+2024-08-01 12:58:29,849 - socketio.client - INFO - Namespace / is connected
+2024-08-01 12:58:29,849 - __main__ - INFO - Market Data Socket connected successfully!
+2024-08-01 12:58:29,850 - engineio.client - INFO - Received packet MESSAGE data 2["joined","{\"type\":\"success\",\"code\":\"s-socket-0001\",\"description\":\"Socket joined successfully! SocketId=x8TQjGhll8j9kcy7ABSB\"}"]
+2024-08-01 12:58:29,850 - socketio.client - INFO - Received event "joined" [/]
+2024-08-01 12:58:30,123 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 12:58:30,324 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 12:58:30,325 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:30,325 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 12:58:30,326 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:30,326 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 12:58:30,327 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:30,327 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 12:58:30,328 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:31,091 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_2885,ltp:3030.6,ltq:6,tb:1647,ts:0,v:5382111,ap:3025.49,ltt:1406995181,lut:1406995181,pc:0,o:3024,h:3036,l:3008.6,c:3030.6,bt:1,mt:1,ai:0|0|0|0,bi:0|1647|3030.6|21"]
+2024-08-01 12:58:31,094 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 12:58:31,094 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_26000,ltp:25010.9,ltq:0,tb:0,ts:0,v:0,ap:25010.9,ltt:1407004298,lut:1407004298,pc:0.24,o:25030.95,h:25078.3,l:24956.4,c:25010.9,bt:1,mt:1,ai:0|0|0|0,bi:0|0|0|0"]
+2024-08-01 12:58:31,094 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 12:58:44,749 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 12:58:44,751 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:44,752 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 12:58:44,752 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:44,752 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 12:58:44,753 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:44,753 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 12:58:44,754 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:48,300 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 12:58:48,301 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:48,301 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 12:58:48,302 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:48,302 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 12:58:48,303 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:48,303 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 12:58:48,304 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:58:49,854 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 12:58:50,153 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 12:59:00,907 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 12:59:00,909 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:59:00,909 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 12:59:00,909 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:59:00,910 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 12:59:00,910 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:59:00,910 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 12:59:00,911 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:59:04,359 - engineio.client - INFO - Sending packet CLOSE data None
+2024-08-01 12:59:04,360 - socketio.client - INFO - Engine.IO connection dropped
+2024-08-01 12:59:04,361 - engineio.client - INFO - Exiting write loop task
+2024-08-01 12:59:04,617 - engineio.client - INFO - Received packet NOOP data None
+2024-08-01 12:59:04,622 - engineio.client - INFO - Waiting for write loop task to end
+2024-08-01 12:59:04,622 - engineio.client - INFO - Waiting for ping loop task to end
+2024-08-01 12:59:04,622 - engineio.client - INFO - Exiting ping task
+2024-08-01 12:59:04,623 - engineio.client - INFO - Exiting read loop task
+2024-08-01 12:59:43,710 - engineio.client - INFO - Attempting WebSocket connection to wss://ttblaze.iifl.com/apimarketdata/socket.io/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJQRUdBU1VTQ18xZjQ0MDgzMGFmMWQ4MmE3YTA5MjUxIiwicHVibGljS2V5IjoiMWY0NDA4MzBhZjFkODJhN2EwOTI1MSIsImlhdCI6MTcyMjUzNTE4MywiZXhwIjoxNzIyNjIxNTgzfQ.nNmeYsgrPEDVt_LSfE9Ui5FBhEEnmjSaaZSqUVIVjv4&userID=PEGASUSC&publishFormat=JSON&broadcastMode=Partial&transport=websocket&EIO=3
+2024-08-01 12:59:45,023 - engineio.client - INFO - WebSocket connection accepted with {'sid': 'jitwl7TCgMcXduy8ABSC', 'upgrades': [], 'pingInterval': 20000, 'pingTimeout': 60000}
+2024-08-01 12:59:45,023 - socketio.client - INFO - Engine.IO connection established
+2024-08-01 12:59:45,023 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 12:59:45,026 - engineio.client - INFO - Received packet MESSAGE data 0
+2024-08-01 12:59:45,026 - socketio.client - INFO - Namespace / is connected
+2024-08-01 12:59:45,026 - __main__ - INFO - Market Data Socket connected successfully!
+2024-08-01 12:59:45,027 - engineio.client - INFO - Received packet MESSAGE data 2["joined","{\"type\":\"success\",\"code\":\"s-socket-0001\",\"description\":\"Socket joined successfully! SocketId=jitwl7TCgMcXduy8ABSC\"}"]
+2024-08-01 12:59:45,028 - socketio.client - INFO - Received event "joined" [/]
+2024-08-01 12:59:45,329 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 12:59:45,330 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:59:45,330 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 12:59:45,331 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:59:45,331 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 12:59:45,332 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:59:45,333 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 12:59:45,333 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 12:59:45,334 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 12:59:46,455 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_2885,ltp:3030.6,ltq:6,tb:1647,ts:0,v:5382111,ap:3025.49,ltt:1406995181,lut:1406995181,pc:0,o:3024,h:3036,l:3008.6,c:3030.6,bt:1,mt:1,ai:0|0|0|0,bi:0|1647|3030.6|21"]
+2024-08-01 12:59:46,456 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 12:59:46,459 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_26000,ltp:25010.9,ltq:0,tb:0,ts:0,v:0,ap:25010.9,ltt:1407004298,lut:1407004298,pc:0.24,o:25030.95,h:25078.3,l:24956.4,c:25010.9,bt:1,mt:1,ai:0|0|0|0,bi:0|0|0|0"]
+2024-08-01 12:59:46,459 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 12:59:51,927 - engineio.client - INFO - Sending packet CLOSE data None
+2024-08-01 12:59:51,928 - socketio.client - INFO - Engine.IO connection dropped
+2024-08-01 12:59:51,928 - engineio.client - INFO - Exiting write loop task
+2024-08-01 12:59:52,211 - engineio.client - INFO - Received packet NOOP data None
+2024-08-01 12:59:52,212 - engineio.client - INFO - Waiting for write loop task to end
+2024-08-01 12:59:52,212 - engineio.client - INFO - Waiting for ping loop task to end
+2024-08-01 12:59:52,218 - engineio.client - INFO - Exiting ping task
+2024-08-01 12:59:52,218 - engineio.client - INFO - Exiting read loop task
+2024-08-01 13:01:05,616 - engineio.client - INFO - Attempting WebSocket connection to wss://ttblaze.iifl.com/apimarketdata/socket.io/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJQRUdBU1VTQ18xZjQ0MDgzMGFmMWQ4MmE3YTA5MjUxIiwicHVibGljS2V5IjoiMWY0NDA4MzBhZjFkODJhN2EwOTI1MSIsImlhdCI6MTcyMjUzNTI2NSwiZXhwIjoxNzIyNjIxNjY1fQ.L-NhYdEI3H9o0-CLGy8sLtoEMYlcL2i5EV9Ut2JE5Ug&userID=PEGASUSC&publishFormat=JSON&broadcastMode=Partial&transport=websocket&EIO=3
+2024-08-01 13:01:07,963 - engineio.client - INFO - WebSocket connection accepted with {'sid': 'SKqjHRf_3uFpRuwNABSD', 'upgrades': [], 'pingInterval': 20000, 'pingTimeout': 60000}
+2024-08-01 13:01:07,963 - socketio.client - INFO - Engine.IO connection established
+2024-08-01 13:01:07,964 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 13:01:07,965 - engineio.client - INFO - Received packet MESSAGE data 0
+2024-08-01 13:01:07,966 - socketio.client - INFO - Namespace / is connected
+2024-08-01 13:01:07,966 - __main__ - INFO - Market Data Socket connected successfully!
+2024-08-01 13:01:07,966 - engineio.client - INFO - Received packet MESSAGE data 2["joined","{\"type\":\"success\",\"code\":\"s-socket-0001\",\"description\":\"Socket joined successfully! SocketId=SKqjHRf_3uFpRuwNABSD\"}"]
+2024-08-01 13:01:07,967 - socketio.client - INFO - Received event "joined" [/]
+2024-08-01 13:01:08,289 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 13:01:09,192 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_2885,ltp:3030.6,ltq:6,tb:1647,ts:0,v:5382111,ap:3025.49,ltt:1406995181,lut:1406995181,pc:0,o:3024,h:3036,l:3008.6,c:3030.6,bt:1,mt:1,ai:0|0|0|0,bi:0|1647|3030.6|21"]
+2024-08-01 13:01:09,194 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 13:01:09,195 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_26000,ltp:25010.9,ltq:0,tb:0,ts:0,v:0,ap:25010.9,ltt:1407004298,lut:1407004298,pc:0.24,o:25030.95,h:25078.3,l:24956.4,c:25010.9,bt:1,mt:1,ai:0|0|0|0,bi:0|0|0|0"]
+2024-08-01 13:01:09,195 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 13:01:09,213 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 13:01:09,213 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:01:09,213 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 13:01:09,214 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:01:09,214 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 13:01:09,215 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:01:09,215 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 13:01:09,216 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:01:12,211 - engineio.client - INFO - Sending packet CLOSE data None
+2024-08-01 13:01:12,212 - socketio.client - INFO - Engine.IO connection dropped
+2024-08-01 13:01:12,213 - engineio.client - INFO - Exiting write loop task
+2024-08-01 13:01:12,479 - engineio.client - INFO - Received packet NOOP data None
+2024-08-01 13:01:12,481 - engineio.client - INFO - Waiting for write loop task to end
+2024-08-01 13:01:12,482 - engineio.client - INFO - Waiting for ping loop task to end
+2024-08-01 13:01:12,483 - engineio.client - INFO - Exiting ping task
+2024-08-01 13:01:12,483 - engineio.client - INFO - Exiting read loop task
+2024-08-01 13:01:49,032 - engineio.client - INFO - Attempting WebSocket connection to wss://ttblaze.iifl.com/apimarketdata/socket.io/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJQRUdBU1VTQ18xZjQ0MDgzMGFmMWQ4MmE3YTA5MjUxIiwicHVibGljS2V5IjoiMWY0NDA4MzBhZjFkODJhN2EwOTI1MSIsImlhdCI6MTcyMjUzNTMwOCwiZXhwIjoxNzIyNjIxNzA4fQ.Gm9UEa3gbDwCyv6gYnfoEGaY7tfiOh3aw6nnf4A5M8k&userID=PEGASUSC&publishFormat=JSON&broadcastMode=Partial&transport=websocket&EIO=3
+2024-08-01 13:01:50,357 - engineio.client - INFO - WebSocket connection accepted with {'sid': 'uYbIAbG8YA2o2lM7ABSE', 'upgrades': [], 'pingInterval': 20000, 'pingTimeout': 60000}
+2024-08-01 13:01:50,357 - socketio.client - INFO - Engine.IO connection established
+2024-08-01 13:01:50,357 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 13:01:50,359 - engineio.client - INFO - Received packet MESSAGE data 0
+2024-08-01 13:01:50,359 - socketio.client - INFO - Namespace / is connected
+2024-08-01 13:01:50,359 - engineio.client - INFO - Received packet MESSAGE data 2["joined","{\"type\":\"success\",\"code\":\"s-socket-0001\",\"description\":\"Socket joined successfully! SocketId=uYbIAbG8YA2o2lM7ABSE\"}"]
+2024-08-01 13:01:50,359 - __main__ - INFO - Market Data Socket connected successfully!
+2024-08-01 13:01:50,361 - socketio.client - INFO - Received event "joined" [/]
+2024-08-01 13:01:50,662 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 13:01:51,585 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_2885,ltp:3030.6,ltq:6,tb:1647,ts:0,v:5382111,ap:3025.49,ltt:1406995181,lut:1406995181,pc:0,o:3024,h:3036,l:3008.6,c:3030.6,bt:1,mt:1,ai:0|0|0|0,bi:0|1647|3030.6|21"]
+2024-08-01 13:01:51,590 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 13:01:51,591 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_26000,ltp:25010.9,ltq:0,tb:0,ts:0,v:0,ap:25010.9,ltt:1407004298,lut:1407004298,pc:0.24,o:25030.95,h:25078.3,l:24956.4,c:25010.9,bt:1,mt:1,ai:0|0|0|0,bi:0|0|0|0"]
+2024-08-01 13:01:51,591 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 13:01:57,762 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 13:01:57,762 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:01:57,763 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 13:01:57,763 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:01:57,763 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 13:01:57,764 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:01:57,765 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 13:01:57,766 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:02:09,301 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 13:02:09,302 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:02:09,303 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 13:02:09,304 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:02:09,305 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 13:02:09,306 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:02:09,308 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 13:02:09,309 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:02:10,025 - engineio.client - INFO - Sending packet CLOSE data None
+2024-08-01 13:02:10,026 - socketio.client - INFO - Engine.IO connection dropped
+2024-08-01 13:02:10,026 - engineio.client - INFO - Exiting write loop task
+2024-08-01 13:02:10,324 - engineio.client - INFO - Unexpected error receiving packet: "TLS/SSL connection has been closed (EOF) (_ssl.c:2427)", aborting
+2024-08-01 13:02:10,329 - engineio.client - INFO - Waiting for write loop task to end
+2024-08-01 13:02:10,330 - engineio.client - INFO - Waiting for ping loop task to end
+2024-08-01 13:02:10,330 - engineio.client - INFO - Exiting ping task
+2024-08-01 13:02:10,332 - engineio.client - INFO - Exiting read loop task
+2024-08-01 13:03:31,525 - engineio.client - INFO - Attempting WebSocket connection to wss://ttblaze.iifl.com/apimarketdata/socket.io/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJQRUdBU1VTQ18xZjQ0MDgzMGFmMWQ4MmE3YTA5MjUxIiwicHVibGljS2V5IjoiMWY0NDA4MzBhZjFkODJhN2EwOTI1MSIsImlhdCI6MTcyMjUzNTQxMSwiZXhwIjoxNzIyNjIxODExfQ.i9hW8Pw0GSNs4IZOjti04QIMjA9cwLDHZCmiZfFtBCA&userID=PEGASUSC&publishFormat=JSON&broadcastMode=Partial&transport=websocket&EIO=3
+2024-08-01 13:03:32,758 - engineio.client - INFO - WebSocket connection accepted with {'sid': 'Cr4qmoAG61yWDqbyABSF', 'upgrades': [], 'pingInterval': 20000, 'pingTimeout': 60000}
+2024-08-01 13:03:32,758 - socketio.client - INFO - Engine.IO connection established
+2024-08-01 13:03:32,759 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 13:03:32,763 - engineio.client - INFO - Received packet MESSAGE data 0
+2024-08-01 13:03:32,766 - socketio.client - INFO - Namespace / is connected
+2024-08-01 13:03:32,766 - __main__ - INFO - Market Data Socket connected successfully!
+2024-08-01 13:03:32,766 - engineio.client - INFO - Received packet MESSAGE data 2["joined","{\"type\":\"success\",\"code\":\"s-socket-0001\",\"description\":\"Socket joined successfully! SocketId=Cr4qmoAG61yWDqbyABSF\"}"]
+2024-08-01 13:03:32,768 - socketio.client - INFO - Received event "joined" [/]
+2024-08-01 13:03:33,063 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 13:03:33,989 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_2885,ltp:3030.6,ltq:6,tb:1647,ts:0,v:5382111,ap:3025.49,ltt:1406995181,lut:1406995181,pc:0,o:3024,h:3036,l:3008.6,c:3030.6,bt:1,mt:1,ai:0|0|0|0,bi:0|1647|3030.6|21"]
+2024-08-01 13:03:33,990 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 13:03:33,993 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_26000,ltp:25010.9,ltq:0,tb:0,ts:0,v:0,ap:25010.9,ltt:1407004298,lut:1407004298,pc:0.24,o:25030.95,h:25078.3,l:24956.4,c:25010.9,bt:1,mt:1,ai:0|0|0|0,bi:0|0|0|0"]
+2024-08-01 13:03:33,993 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 13:03:39,412 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 13:03:39,414 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:03:39,415 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 13:03:39,415 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:03:39,416 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 13:03:39,417 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:03:39,418 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 13:03:39,419 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:03:45,438 - engineio.client - INFO - Sending packet CLOSE data None
+2024-08-01 13:03:45,441 - socketio.client - INFO - Engine.IO connection dropped
+2024-08-01 13:03:45,441 - engineio.client - INFO - Exiting write loop task
+2024-08-01 13:03:45,722 - engineio.client - INFO - Received packet NOOP data None
+2024-08-01 13:03:45,726 - engineio.client - INFO - Waiting for write loop task to end
+2024-08-01 13:03:45,727 - engineio.client - INFO - Waiting for ping loop task to end
+2024-08-01 13:03:45,728 - engineio.client - INFO - Exiting ping task
+2024-08-01 13:03:45,729 - engineio.client - INFO - Exiting read loop task
+2024-08-01 13:04:01,945 - engineio.client - INFO - Attempting WebSocket connection to wss://ttblaze.iifl.com/apimarketdata/socket.io/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJQRUdBU1VTQ18xZjQ0MDgzMGFmMWQ4MmE3YTA5MjUxIiwicHVibGljS2V5IjoiMWY0NDA4MzBhZjFkODJhN2EwOTI1MSIsImlhdCI6MTcyMjUzNTQ0MSwiZXhwIjoxNzIyNjIxODQxfQ.BQt5_gaZ5zZGMemFwFbU7AJkXnFBg_d1WHfmNGul_RQ&userID=PEGASUSC&publishFormat=JSON&broadcastMode=Partial&transport=websocket&EIO=3
+2024-08-01 13:04:03,270 - engineio.client - INFO - WebSocket connection accepted with {'sid': 'cw6p_zhkbhoV9_JmABSG', 'upgrades': [], 'pingInterval': 20000, 'pingTimeout': 60000}
+2024-08-01 13:04:03,270 - socketio.client - INFO - Engine.IO connection established
+2024-08-01 13:04:03,271 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 13:04:03,274 - engineio.client - INFO - Received packet MESSAGE data 0
+2024-08-01 13:04:03,274 - socketio.client - INFO - Namespace / is connected
+2024-08-01 13:04:03,274 - __main__ - INFO - Market Data Socket connected successfully!
+2024-08-01 13:04:03,275 - engineio.client - INFO - Received packet MESSAGE data 2["joined","{\"type\":\"success\",\"code\":\"s-socket-0001\",\"description\":\"Socket joined successfully! SocketId=cw6p_zhkbhoV9_JmABSG\"}"]
+2024-08-01 13:04:03,276 - socketio.client - INFO - Received event "joined" [/]
+2024-08-01 13:04:03,575 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 13:04:04,554 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_2885,ltp:3030.6,ltq:6,tb:1647,ts:0,v:5382111,ap:3025.49,ltt:1406995181,lut:1406995181,pc:0,o:3024,h:3036,l:3008.6,c:3030.6,bt:1,mt:1,ai:0|0|0|0,bi:0|1647|3030.6|21"]
+2024-08-01 13:04:04,556 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 13:04:04,560 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_26000,ltp:25010.9,ltq:0,tb:0,ts:0,v:0,ap:25010.9,ltt:1407004298,lut:1407004298,pc:0.24,o:25030.95,h:25078.3,l:24956.4,c:25010.9,bt:1,mt:1,ai:0|0|0|0,bi:0|0|0|0"]
+2024-08-01 13:04:04,561 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 13:04:09,310 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 13:04:09,311 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:09,312 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 13:04:09,312 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:09,313 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 13:04:09,313 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:09,314 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 13:04:09,314 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:09,494 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:09,494 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:09,495 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:09,495 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:09,495 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:09,500 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:09,501 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:09,504 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:20,167 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 13:04:20,170 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:20,170 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 13:04:20,171 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:20,171 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 13:04:20,172 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:20,172 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 13:04:20,173 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:20,174 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:20,176 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:20,177 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:20,177 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:20,177 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:20,184 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:20,188 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:20,189 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:23,277 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 13:04:23,642 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 13:04:27,638 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 13:04:27,639 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:27,639 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 13:04:27,640 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:27,640 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 13:04:27,640 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:27,640 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 13:04:27,640 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:27,641 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:27,641 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:27,642 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:27,642 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:27,642 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:27,653 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:27,654 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:27,654 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:39,125 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 13:04:39,127 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:39,128 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 13:04:39,128 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:39,128 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 13:04:39,129 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:39,129 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 13:04:39,129 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:39,134 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:39,136 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:39,137 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:39,138 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:39,138 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:39,145 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:39,149 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:39,151 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:43,285 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 13:04:43,714 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 13:04:50,155 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 13:04:50,157 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:50,157 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 13:04:50,159 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:50,160 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 13:04:50,162 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:50,164 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 13:04:50,164 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:50,165 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:04:50,165 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:50,165 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:50,169 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:04:50,170 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:50,170 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:50,173 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:50,182 - __main__ - INFO - I received a 1505 Candle data message and sent to producer!
+2024-08-01 13:04:56,173 - engineio.client - INFO - Sending packet CLOSE data None
+2024-08-01 13:04:56,174 - socketio.client - INFO - Engine.IO connection dropped
+2024-08-01 13:04:56,174 - engineio.client - INFO - Exiting write loop task
+2024-08-01 13:04:56,475 - engineio.client - INFO - Received packet NOOP data None
+2024-08-01 13:04:56,475 - engineio.client - INFO - Waiting for write loop task to end
+2024-08-01 13:04:56,475 - engineio.client - INFO - Waiting for ping loop task to end
+2024-08-01 13:04:56,480 - engineio.client - INFO - Exiting ping task
+2024-08-01 13:04:56,480 - engineio.client - INFO - Exiting read loop task
+2024-08-01 13:11:24,773 - engineio.client - INFO - Attempting WebSocket connection to wss://ttblaze.iifl.com/apimarketdata/socket.io/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJQRUdBU1VTQ18xZjQ0MDgzMGFmMWQ4MmE3YTA5MjUxIiwicHVibGljS2V5IjoiMWY0NDA4MzBhZjFkODJhN2EwOTI1MSIsImlhdCI6MTcyMjUzNTg4NCwiZXhwIjoxNzIyNjIyMjg0fQ.9Y9NGMtsCoUl8mJWl9pg-bpZRQMHN9xtsLqgU3mIPrg&userID=PEGASUSC&publishFormat=JSON&broadcastMode=Partial&transport=websocket&EIO=3
+2024-08-01 13:11:26,201 - engineio.client - INFO - WebSocket connection accepted with {'sid': 'ENUZ366ZQilyOjzbABSI', 'upgrades': [], 'pingInterval': 20000, 'pingTimeout': 60000}
+2024-08-01 13:11:26,202 - socketio.client - INFO - Engine.IO connection established
+2024-08-01 13:11:26,202 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 13:11:26,204 - engineio.client - INFO - Received packet MESSAGE data 0
+2024-08-01 13:11:26,204 - socketio.client - INFO - Namespace / is connected
+2024-08-01 13:11:26,204 - __main__ - INFO - Market Data Socket connected successfully!
+2024-08-01 13:11:26,205 - engineio.client - INFO - Received packet MESSAGE data 2["joined","{\"type\":\"success\",\"code\":\"s-socket-0001\",\"description\":\"Socket joined successfully! SocketId=ENUZ366ZQilyOjzbABSI\"}"]
+2024-08-01 13:11:26,206 - socketio.client - INFO - Received event "joined" [/]
+2024-08-01 13:11:26,508 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 13:11:27,535 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_2885,ltp:3030.6,ltq:6,tb:1647,ts:0,v:5382111,ap:3025.49,ltt:1406995181,lut:1406995181,pc:0,o:3024,h:3036,l:3008.6,c:3030.6,bt:1,mt:1,ai:0|0|0|0,bi:0|1647|3030.6|21"]
+2024-08-01 13:11:27,539 - __main__ - INFO - Subscription response: {'type': 'success', 'code': 's-session-0001', 'description': 'Instrument subscribed successfully!', 'result': {'mdp': 1501, 'quotesList': [{'exchangeSegment': 1, 'exchangeInstrumentID': 2885}], 'listQuotes': ['{"MessageCode":1501,"ExchangeSegment":1,"ExchangeInstrumentID":2885,"LastTradedPrice":3030.6,"LastTradedQunatity":6,"TotalBuyQuantity":1647,"TotalSellQuantity":0,"TotalTradedQuantity":5382111,"AverageTradedPrice":3025.49,"LastTradedTime":1406995181,"LastUpdateTime":1406995181,"PercentChange":0,"Open":3024,"High":3036,"Low":3008.6,"Close":3030.6,"TotalValueTraded":null,"AskInfo":{"Size":0,"Price":0,"TotalOrders":0,"BuyBackMarketMaker":0},"BidInfo":{"Size":1647,"Price":3030.6,"TotalOrders":21,"BuyBackMarketMaker":0},"XMarketType":1,"BookType":1}'], 'Remaining_Subscription_Count': 799}}
+2024-08-01 13:11:27,539 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 13:11:27,540 - __main__ - INFO - I received a 1501 Touchline message!
+2024-08-01 13:11:27,944 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 13:11:27,944 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:11:27,945 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 13:11:27,945 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:11:27,946 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 13:11:27,946 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:11:27,947 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 13:11:27,947 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:11:28,296 - __main__ - INFO - Message delivered to market_data_topic [0]
+2024-08-01 13:11:29,767 - engineio.client - INFO - Sending packet CLOSE data None
+2024-08-01 13:11:29,768 - socketio.client - INFO - Engine.IO connection dropped
+2024-08-01 13:11:29,768 - engineio.client - INFO - Exiting write loop task
+2024-08-01 13:11:30,057 - engineio.client - INFO - Received packet NOOP data None
+2024-08-01 13:11:30,059 - engineio.client - INFO - Waiting for write loop task to end
+2024-08-01 13:11:30,059 - engineio.client - INFO - Waiting for ping loop task to end
+2024-08-01 13:11:30,060 - engineio.client - INFO - Exiting ping task
+2024-08-01 13:11:30,061 - engineio.client - INFO - Exiting read loop task
+2024-08-01 13:20:33,329 - engineio.client - INFO - Attempting WebSocket connection to wss://ttblaze.iifl.com/apimarketdata/socket.io/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJQRUdBU1VTQ18xZjQ0MDgzMGFmMWQ4MmE3YTA5MjUxIiwicHVibGljS2V5IjoiMWY0NDA4MzBhZjFkODJhN2EwOTI1MSIsImlhdCI6MTcyMjUzNjQzMywiZXhwIjoxNzIyNjIyODMzfQ.aKI8zsz2cRnIJ_eDtHD5jN7StXf9KdKSOt_s8Wkohxk&userID=PEGASUSC&publishFormat=JSON&broadcastMode=Partial&transport=websocket&EIO=3
+2024-08-01 13:20:35,271 - engineio.client - INFO - WebSocket connection accepted with {'sid': 'xiG8_XIpix9gtYMRABSJ', 'upgrades': [], 'pingInterval': 20000, 'pingTimeout': 60000}
+2024-08-01 13:20:35,271 - socketio.client - INFO - Engine.IO connection established
+2024-08-01 13:20:35,271 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 13:20:35,273 - engineio.client - INFO - Received packet MESSAGE data 0
+2024-08-01 13:20:35,273 - socketio.client - INFO - Namespace / is connected
+2024-08-01 13:20:35,273 - __main__ - INFO - Market Data Socket connected successfully!
+2024-08-01 13:20:35,275 - engineio.client - INFO - Received packet MESSAGE data 2["joined","{\"type\":\"success\",\"code\":\"s-socket-0001\",\"description\":\"Socket joined successfully! SocketId=xiG8_XIpix9gtYMRABSJ\"}"]
+2024-08-01 13:20:35,275 - socketio.client - INFO - Received event "joined" [/]
+2024-08-01 13:20:35,577 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 13:20:36,533 - __main__ - INFO - Subscription response: {'type': 'success', 'code': 's-session-0001', 'description': 'Instrument subscribed successfully!', 'result': {'mdp': 1501, 'quotesList': [{'exchangeSegment': 1, 'exchangeInstrumentID': 2885}], 'listQuotes': ['{"MessageCode":1501,"ExchangeSegment":1,"ExchangeInstrumentID":2885,"LastTradedPrice":3030.6,"LastTradedQunatity":6,"TotalBuyQuantity":1647,"TotalSellQuantity":0,"TotalTradedQuantity":5382111,"AverageTradedPrice":3025.49,"LastTradedTime":1406995181,"LastUpdateTime":1406995181,"PercentChange":0,"Open":3024,"High":3036,"Low":3008.6,"Close":3030.6,"TotalValueTraded":null,"AskInfo":{"Size":0,"Price":0,"TotalOrders":0,"BuyBackMarketMaker":0},"BidInfo":{"Size":1647,"Price":3030.6,"TotalOrders":21,"BuyBackMarketMaker":0},"XMarketType":1,"BookType":1}'], 'Remaining_Subscription_Count': 799}}
+2024-08-01 13:20:36,544 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_2885,ltp:3030.6,ltq:6,tb:1647,ts:0,v:5382111,ap:3025.49,ltt:1406995181,lut:1406995181,pc:0,o:3024,h:3036,l:3008.6,c:3030.6,bt:1,mt:1,ai:0|0|0|0,bi:0|1647|3030.6|21"]
+2024-08-01 13:20:36,544 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 13:20:38,037 - __main__ - INFO - Message delivered to message1501_json_partial [0]
+2024-08-01 13:20:38,037 - __main__ - INFO - I received a 1501, Touchline Event message!t:1_2885,ltp:3030.6,ltq:6,tb:1647,ts:0,v:5382111,ap:3025.49,ltt:1406995181,lut:1406995181,pc:0,o:3024,h:3036,l:3008.6,c:3030.6,bt:1,mt:1,ai:0|0|0|0,bi:0|1647|3030.6|21
+2024-08-01 13:20:39,367 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 13:20:39,368 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:20:39,369 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 13:20:39,369 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:20:39,370 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 13:20:39,370 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:20:39,370 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 13:20:39,371 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:20:50,940 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 13:20:50,942 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:20:50,942 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 13:20:50,943 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:20:50,943 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 13:20:50,943 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:20:50,943 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 13:20:50,944 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:20:55,274 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 13:20:55,592 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 13:20:57,807 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 13:20:57,812 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:20:57,820 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 13:20:57,821 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:20:57,821 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 13:20:57,822 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:20:57,822 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 13:20:57,823 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:21:01,209 - engineio.client - INFO - Sending packet CLOSE data None
+2024-08-01 13:21:01,210 - socketio.client - INFO - Engine.IO connection dropped
+2024-08-01 13:21:01,211 - engineio.client - INFO - Exiting write loop task
+2024-08-01 13:21:01,577 - engineio.client - INFO - Received packet NOOP data None
+2024-08-01 13:21:01,581 - engineio.client - INFO - Waiting for write loop task to end
+2024-08-01 13:21:01,581 - engineio.client - INFO - Waiting for ping loop task to end
+2024-08-01 13:21:01,582 - engineio.client - INFO - Exiting ping task
+2024-08-01 13:21:01,582 - engineio.client - INFO - Exiting read loop task
+2024-08-01 13:21:25,530 - engineio.client - INFO - Attempting WebSocket connection to wss://ttblaze.iifl.com/apimarketdata/socket.io/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJQRUdBU1VTQ18xZjQ0MDgzMGFmMWQ4MmE3YTA5MjUxIiwicHVibGljS2V5IjoiMWY0NDA4MzBhZjFkODJhN2EwOTI1MSIsImlhdCI6MTcyMjUzNjQ4NSwiZXhwIjoxNzIyNjIyODg1fQ.ZelKrQH4DdCswH2mSMVxxbVc0thVmkeU9bEQrU_foUM&userID=PEGASUSC&publishFormat=JSON&broadcastMode=Partial&transport=websocket&EIO=3
+2024-08-01 13:21:26,856 - engineio.client - INFO - WebSocket connection accepted with {'sid': 'C_lO-Cb48XJI1ucqABSK', 'upgrades': [], 'pingInterval': 20000, 'pingTimeout': 60000}
+2024-08-01 13:21:26,856 - socketio.client - INFO - Engine.IO connection established
+2024-08-01 13:21:26,857 - engineio.client - INFO - Sending packet PING data None
+2024-08-01 13:21:26,858 - engineio.client - INFO - Received packet MESSAGE data 0
+2024-08-01 13:21:26,858 - socketio.client - INFO - Namespace / is connected
+2024-08-01 13:21:26,859 - engineio.client - INFO - Received packet MESSAGE data 2["joined","{\"type\":\"success\",\"code\":\"s-socket-0001\",\"description\":\"Socket joined successfully! SocketId=C_lO-Cb48XJI1ucqABSK\"}"]
+2024-08-01 13:21:26,859 - __main__ - INFO - Market Data Socket connected successfully!
+2024-08-01 13:21:26,859 - socketio.client - INFO - Received event "joined" [/]
+2024-08-01 13:21:27,163 - engineio.client - INFO - Received packet PONG data None
+2024-08-01 13:21:27,667 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86307"]
+2024-08-01 13:21:27,667 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:21:27,668 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:0"]
+2024-08-01 13:21:27,669 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:21:27,669 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,87:86001"]
+2024-08-01 13:21:27,669 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:21:27,669 - engineio.client - INFO - Received packet MESSAGE data 2["1105-json-partial","t:51_437994,145:1"]
+2024-08-01 13:21:27,670 - socketio.client - INFO - Received event "1105-json-partial" [/]
+2024-08-01 13:21:28,188 - engineio.client - INFO - Received packet MESSAGE data 2["1501-json-partial","t:1_2885,ltp:3030.6,ltq:6,tb:1647,ts:0,v:5382111,ap:3025.49,ltt:1406995181,lut:1406995181,pc:0,o:3024,h:3036,l:3008.6,c:3030.6,bt:1,mt:1,ai:0|0|0|0,bi:0|1647|3030.6|21"]
+2024-08-01 13:21:28,189 - socketio.client - INFO - Received event "1501-json-partial" [/]
+2024-08-01 13:21:28,193 - __main__ - INFO - Subscription response: {'type': 'success', 'code': 's-session-0001', 'description': 'Instrument subscribed successfully!', 'result': {'mdp': 1501, 'quotesList': [{'exchangeSegment': 1, 'exchangeInstrumentID': 2885}], 'listQuotes': ['{"MessageCode":1501,"ExchangeSegment":1,"ExchangeInstrumentID":2885,"LastTradedPrice":3030.6,"LastTradedQunatity":6,"TotalBuyQuantity":1647,"TotalSellQuantity":0,"TotalTradedQuantity":5382111,"AverageTradedPrice":3025.49,"LastTradedTime":1406995181,"LastUpdateTime":1406995181,"PercentChange":0,"Open":3024,"High":3036,"Low":3008.6,"Close":3030.6,"TotalValueTraded":null,"AskInfo":{"Size":0,"Price":0,"TotalOrders":0,"BuyBackMarketMaker":0},"BidInfo":{"Size":1647,"Price":3030.6,"TotalOrders":21,"BuyBackMarketMaker":0},"XMarketType":1,"BookType":1}'], 'Remaining_Subscription_Count': 799}}
+2024-08-01 13:21:28,981 - __main__ - INFO - Message delivered to message1105_json_partial [0]
+2024-08-01 13:21:28,981 - __main__ - INFO - Message delivered to message1105_json_partial [0]
+2024-08-01 13:21:28,981 - __main__ - INFO - Message delivered to message1105_json_partial [0]
+2024-08-01 13:21:28,981 - __main__ - INFO - Message delivered to message1105_json_partial [0]
+2024-08-01 13:21:28,981 - __main__ - INFO - I received a 1105, Instrument Property Change Event message!t:51_437994,145:0
+2024-08-01 13:21:28,989 - __main__ - INFO - I received a 1105, Instrument Property Change Event message!t:51_437994,145:1
+2024-08-01 13:21:28,989 - __main__ - INFO - I received a 1105, Instrument Property Change Event message!t:51_437994,87:86307
+2024-08-01 13:21:28,990 - __main__ - INFO - I received a 1105, Instrument Property Change Event message!t:51_437994,87:86001
+2024-08-01 13:21:34,382 - engineio.client - INFO - Sending packet CLOSE data None
+2024-08-01 13:21:34,385 - socketio.client - INFO - Engine.IO connection dropped
+2024-08-01 13:21:34,385 - engineio.client - INFO - Exiting write loop task
+2024-08-01 13:21:34,844 - engineio.client - INFO - Received packet NOOP data None
+2024-08-01 13:21:34,847 - engineio.client - INFO - Waiting for write loop task to end
+2024-08-01 13:21:34,848 - engineio.client - INFO - Waiting for ping loop task to end
+2024-08-01 13:21:34,850 - engineio.client - INFO - Exiting ping task
+2024-08-01 13:21:34,852 - engineio.client - INFO - Exiting read loop task
