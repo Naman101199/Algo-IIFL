@@ -1,4 +1,5 @@
 sudo dnf update -y
+sudo yum install java-1.8.0
 sudo dnf install -y docker
 sudo dnf install -y libxcrypt-compat
 sudo dnf install -y git
@@ -11,7 +12,7 @@ cd Python-3.11.9
 sudo ./configure --enable-optimizations
 sudo make altinstall
 python3.11 --version
-python -m venv myenv
+python3 -m venv myenv
 source myenv/bin/activate
 
 sudo systemctl start docker
