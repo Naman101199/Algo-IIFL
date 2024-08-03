@@ -28,7 +28,7 @@ chmod 644 ~/.ssh/id_rsa.pub
 
 ssh -T git@github.com
 
-git@github.com:Naman101199/Algo-IIFL.git
+git clone git@github.com:Naman101199/Algo-IIFL.git
 
 
 
