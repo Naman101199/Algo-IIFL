@@ -57,7 +57,7 @@ soc = MDSocket_io(set_marketDataToken, set_muserID)
 
 # Instruments for subscribing
 Instruments = [
-    {'exchangeSegment': 1, 'exchangeInstrumentID': 2885}
+    {'exchangeSegment': 2, 'exchangeInstrumentID': 61211}
 ]
 
 # Callback for connection
@@ -175,8 +175,7 @@ soc.on_error = on_error
 # Event listener
 el = soc.get_emitter()
 el.on('connect', on_connect)
-# el.on('1501-json-partial', on_message1501_json_partial)
-el.on('1105-json-partial', on_message1105_json_partial)
+el.on('1512-json-full', on_message1512_json_full)
 
 # Infinite loop on the main thread. Nothing after this will run.
 # You have to use the pre-defined callbacks to manage subscriptions.

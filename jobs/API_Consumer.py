@@ -18,28 +18,21 @@ logger = logging.getLogger(__name__)
 
 def main():
 
-    topic_name = 'message1501_json_partial'
+    topic_name = 'message1512_json_full'
 
     schema = StructType([
-        StructField("t", StringType(), False),        # Exchangesegment_ExchangeInstrumentID(exchange segment enum with underscore along with instumentID of the particular subscribed instrument)
-        StructField("ltp", DoubleType(), False),      # Last traded price
-        StructField("ltq", LongType(), False),        # Last traded quantity
-        StructField("tb", LongType(), False),         # Total buy quantity
-        StructField("ts", LongType(), False),         # Total sell quantity
-        StructField("v", LongType(), False),          # The volume is commonly reported as the number of shares that changed hands during a given day
-        StructField("ap", DoubleType(), False),       # Average Traded Price
-        StructField("ltt", LongType(), False),        # Last Traded Time
-        StructField("lut", LongType(), False),        # Last Update Time
-        StructField("pc", DoubleType(), False),       # Percent Change
-        StructField("o", DoubleType(), False),        # Open
-        StructField("h", DoubleType(), False),        # High
-        StructField("l", DoubleType(), False),        # Low
-        StructField("c", DoubleType(), False),        # Close
-        StructField("vp", DoubleType(), False),       # Total price volume
-        StructField("ai", StringType(), False),       # Ask Info(Ask Size Index+'|'+Ask Price +'|'+ Ask TotalOrders)
-        StructField("bi", StringType(), False)        # Bid Info(Bid Size Index+'|'+ Bid Price +'|'+Bid TotalOrders)
+        StructField("MessageCode", IntegerType(), False),
+        StructField("MessageVersion", IntegerType(), False),
+        StructField("ApplicationType", IntegerType(), False),
+        StructField("TokenID", IntegerType(), False),
+        StructField("ExchangeSegment", IntegerType(), False),
+        StructField("ExchangeInstrumentID", IntegerType(), False),
+        StructField("BookType", IntegerType(), False),
+        StructField("XMarketType", IntegerType(), False),
+        StructField("LastTradedPrice", DoubleType(), False),
+        StructField("LastTradedQunatity", IntegerType(), False),
+        StructField("LastUpdateTime", LongType(), False)
     ])
-
 
     try:
         spark = SparkSession.builder \
@@ -106,7 +99,7 @@ def main():
         tickerDf = read_kafka_topic(topic_name, schema)
 
         if tickerDf:
-            streaming_query = streamWriter(tickerDf, 's3a://algo-iifl/checkpoints/tick_data', 's3a://algo-iifl/data')
+            streaming_query = streamWriter(tickerDf, f's3a://algo-iifl/checkpoints/tick_data/{topic_name}', f's3a://algo-iifl/data/{topic_name}')
             streaming_query.awaitTermination()
         else:
             logger.error("Ticker dataframe is None. Exiting application.")

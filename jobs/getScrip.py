@@ -15,9 +15,9 @@ source = "WEBAPI"
 xt = XTSConnect(API_KEY, API_SECRET, source)
 response = xt.marketdata_login()
 
-exchange = [xt.EXCHANGE_MCXFO]
+exchange = [xt.EXCHANGE_NSEFO]
 master = xt.get_master(exchange)
 master = master['result']
 
 master = [scrip.split('|') for scrip in master.split('\n')]
-print([i for i in master if i[3] == 'GOLD' and i[6] == 'OPTFUT'])
+print([i for i in master if (i[3] == 'NIFTY') and (i[4] == 'NIFTY24AUGFUT')])

@@ -2,3 +2,5 @@ algo_venv/
 myenv/
 config.py
 spark-warehouse/
+__pycache__/
+jobs/__pycache__/
