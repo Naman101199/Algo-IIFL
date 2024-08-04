@@ -1,3 +1,4 @@
+export EC2_PUBLIC_IP=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
 sudo dnf update -y
 sudo yum install java-1.8.0
 sudo dnf install -y docker
@@ -5,7 +6,7 @@ sudo dnf install -y libxcrypt-compat
 sudo dnf install -y git
 sudo dnf groupinstall "Development Tools" -y
 sudo dnf install openssl-devel bzip2-devel libffi-devel -y
-cd /usr/src
+# cd /usr/src
 sudo wget https://www.python.org/ftp/python/3.11.9/Python-3.11.9.tgz
 sudo tar xzf Python-3.11.9.tgz
 cd Python-3.11.9
