@@ -26,7 +26,7 @@ source = "WEBAPI"
 
 # Kafka configuration
 kafka_config = {
-    'bootstrap.servers': 'localhost:9092',  # Update with your Kafka broker address
+    'bootstrap.servers': os.environ.get('EC2_PUBLIC_IP', 'localhost') + ':9092',  # Update with your Kafka broker address
     'client.id': 'market_data_producer'
 }
 
