@@ -1,3 +1,4 @@
 algo_venv/
+myenv/
 config.py
 spark-warehouse/
