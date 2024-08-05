@@ -4,3 +4,4 @@ config.py
 spark-warehouse/
 __pycache__/
 jobs/__pycache__/
+master.csv

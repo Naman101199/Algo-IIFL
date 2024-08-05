@@ -1,13 +1,13 @@
 import sys
 import os
 from config import configuration
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 import logging
-from Connect import XTSConnect
 from datetime import datetime
-from MarketDataSocketClient import MDSocket_io
 from confluent_kafka import Producer
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from Connect import XTSConnect
+from MarketDataSocketClient import MDSocket_io
 
 # Configure logging to log to both console and file
 todays_date = str(datetime.today().date()).replace('-','_')
@@ -19,6 +19,19 @@ logging.basicConfig(level=logging.INFO,
                         logging.StreamHandler()
                     ])
 logger = logging.getLogger(__name__)
+
+# Function to delivery callback
+def delivery_report(err, msg):
+    if err is not None:
+        logger.error(f'Message delivery failed: {err}')
+    else:
+        logger.info(f'Message delivered to {msg.topic()} [{msg.partition()}]')
+
+# Function to produce messages to Kafka
+def produce_to_kafka(topic, value):
+    producer.produce(topic, value=value, callback=delivery_report)
+    producer.flush()
+
 
 API_KEY = configuration['API_KEY']
 API_SECRET = configuration['API_SECRET']
@@ -32,18 +45,6 @@ kafka_config = {
 
 # Create a Kafka producer
 producer = Producer(kafka_config)
-
-# Function to delivery callback
-def delivery_report(err, msg):
-    if err is not None:
-        logger.error(f'Message delivery failed: {err}')
-    else:
-        logger.info(f'Message delivered to {msg.topic()} [{msg.partition()}]')
-
-# Function to produce messages to Kafka
-def produce_to_kafka(topic, value):
-    producer.produce(topic, value=value, callback=delivery_report)
-    producer.flush()
 
 xt = XTSConnect(API_KEY, API_SECRET, source)
 response = xt.marketdata_login()

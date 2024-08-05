@@ -19,6 +19,8 @@ logger = logging.getLogger(__name__)
 def main():
 
     topic_name = 'message1512_json_full'
+    checkpointFolder = f's3a://algo-iifl/checkpoints/tick_data/{topic_name}/{todays_date}'
+    output = f's3a://algo-iifl/data/{topic_name}/{todays_date}'
 
     schema = StructType([
         StructField("MessageCode", IntegerType(), False),
@@ -99,7 +101,7 @@ def main():
         tickerDf = read_kafka_topic(topic_name, schema)
 
         if tickerDf:
-            streaming_query = streamWriter(tickerDf, f's3a://algo-iifl/checkpoints/tick_data/{topic_name}', f's3a://algo-iifl/data/{topic_name}')
+            streaming_query = streamWriter(tickerDf, checkpointFolder, output)
             streaming_query.awaitTermination()
         else:
             logger.error("Ticker dataframe is None. Exiting application.")

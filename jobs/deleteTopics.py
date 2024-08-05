@@ -1,5 +1,17 @@
 from confluent_kafka.admin import AdminClient
 import os
+import logging
+from datetime import datetime
+
+todays_date = str(datetime.today().date()).replace('-','_')
+log_file = f'logs/producer_{todays_date}.log'
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    handlers=[
+                        logging.FileHandler(log_file),
+                        logging.StreamHandler()
+                    ])
+logger = logging.getLogger(__name__)
 
 # Initialize Admin Client
 admin_client = AdminClient({
@@ -19,6 +31,6 @@ delete_topics_result = admin_client.delete_topics(list(topics))
 for topic, future in delete_topics_result.items():
     try:
         future.result()  # The result itself is None
-        print(f"Deleted topic: {topic}")
+        logger.info(f"Deleted topic: {topic}")
     except Exception as e:
-        print(f"Failed to delete topic {topic}: {e}")
+        logger.error(f"Failed to delete topic {topic}: {e}")
