@@ -8,3 +8,4 @@ logs/
 __pycache__/Connect.cpython-39.pyc
 __pycache__/MarketDataSocketClient.cpython-39.pyc
 __pycache__/Connect.cpython-39.pyc
+master.csv

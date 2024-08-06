@@ -19,7 +19,6 @@ exchange = [xt.EXCHANGE_NSEFO]
 master = xt.get_master(exchange)
 master = master['result']
 
-
 lines = [line for line in master.strip().split("\n")]
 
 # Split each line by the separator
@@ -65,8 +64,4 @@ def shift_columns(row):
 
 # Apply the function to each row in the dataframe
 df = df.apply(shift_columns, axis=1)
-
 print(df[df['ExchangeInstrumentID'].isin(['35089','35415'])])
-
-
-
