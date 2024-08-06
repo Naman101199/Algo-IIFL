@@ -307,7 +307,7 @@ class XTSConnect(XTSCommon):
              "orderUniqueIdentifier": orderUniqueIdentifier
             }
             response = self._post('bracketorder.place', json.dumps(params))
-            print(response)
+            # print(response)
             return response
         except Exception as e:
             return response['description']

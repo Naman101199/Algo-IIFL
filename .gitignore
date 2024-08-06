@@ -4,3 +4,7 @@ config.py
 spark-warehouse/
 __pycache__/
 jobs/__pycache__/
+logs/
+__pycache__/Connect.cpython-39.pyc
+__pycache__/MarketDataSocketClient.cpython-39.pyc
+__pycache__/Connect.cpython-39.pyc

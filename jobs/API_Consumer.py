@@ -19,6 +19,8 @@ logger = logging.getLogger(__name__)
 def main():
 
     topic_name = 'message1512_json_full'
+    checkpoint_folder = f's3a://algo-iifl/checkpoints/tick_data/{topic_name}/{todays_date}'
+    output_folder = f's3a://algo-iifl/data/{topic_name}/{todays_date}'
 
     schema = StructType([
         StructField("MessageCode", IntegerType(), False),
@@ -60,7 +62,7 @@ def main():
         try:
             spark_df = spark.readStream \
                 .format('kafka') \
-                .option('kafka.bootstrap.servers', 'broker:29092') \
+                .option('kafka.bootstrap.servers', '43.205.25.254:9092') \
                 .option('subscribe', topic) \
                 .option('startingOffsets', 'earliest') \
                 .load() 
@@ -99,8 +101,9 @@ def main():
         tickerDf = read_kafka_topic(topic_name, schema)
 
         if tickerDf:
-            streaming_query = streamWriter(tickerDf, f's3a://algo-iifl/checkpoints/tick_data/{topic_name}', f's3a://algo-iifl/data/{topic_name}')
+            streaming_query = streamWriter(tickerDf, checkpoint_folder, output_folder)
             streaming_query.awaitTermination()
+            logging.info("data inserted into s3")
         else:
             logger.error("Ticker dataframe is None. Exiting application.")
     except Exception as e:

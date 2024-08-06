@@ -2,11 +2,11 @@ import sys
 import os
 from config import configuration
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
+import time
 from Connect import XTSConnect
 from datetime import datetime
 from config import configuration
-# import pandas as pd
+import pandas as pd
 
 API_KEY = configuration['API_KEY']
 API_SECRET = configuration['API_SECRET']
@@ -19,5 +19,54 @@ exchange = [xt.EXCHANGE_NSEFO]
 master = xt.get_master(exchange)
 master = master['result']
 
-master = [scrip.split('|') for scrip in master.split('\n')]
-print([i for i in master if (i[3] == 'NIFTY') and (i[4] == 'NIFTY24AUGFUT')])
+
+lines = [line for line in master.strip().split("\n")]
+
+# Split each line by the separator
+data = [line.split("|") for line in lines]
+
+columns = [
+    "ExchangeSegment",
+    "ExchangeInstrumentID",
+    "InstrumentType",
+    "Name",
+    "Description",
+    "Series",
+    "NameWithSeries",
+    "InstrumentID",
+    "PriceBand.High",
+    "PriceBand.Low",
+    "FreezeQty",
+    "TickSize",
+    "LotSize",
+    "Multiplier",
+    "UnderlyingInstrumentId",
+    "UnderlyingIndexName",
+    "ContractExpiration",
+    "StrikePrice",
+    "OptionType",
+    "DisplayName",
+    "PriceNumerator",
+    "PriceDenominator",
+    "DetailedDescription"
+]
+df = pd.DataFrame(data, columns=columns)
+
+# Function to shift columns for FUTSTK series
+def shift_columns(row):
+    if 'FUT' in row['Series']:
+        row['DetailedDescription'] = row['PriceNumerator']
+        row['PriceDenominator'] = row['DisplayName']
+        row['PriceNumerator'] = row['OptionType']
+        row['DisplayName'] = row['StrikePrice']
+        row['StrikePrice'] = None
+        row['OptionType'] = None
+    return row
+
+# Apply the function to each row in the dataframe
+df = df.apply(shift_columns, axis=1)
+
+print(df[df['ExchangeInstrumentID'].isin(['35089','35415'])])
+
+
+

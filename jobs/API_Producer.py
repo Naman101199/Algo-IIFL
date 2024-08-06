@@ -18,6 +18,11 @@ logging.basicConfig(level=logging.INFO,
                         logging.FileHandler(log_file),
                         logging.StreamHandler()
                     ])
+                    
+# Set logging level for socketio.client and engineio.client to WARNING to suppress INFO messages
+logging.getLogger('socketio.client').setLevel(logging.WARNING)
+logging.getLogger('engineio.client').setLevel(logging.WARNING)
+
 logger = logging.getLogger(__name__)
 
 API_KEY = configuration['API_KEY']
@@ -26,7 +31,7 @@ source = "WEBAPI"
 
 # Kafka configuration
 kafka_config = {
-    'bootstrap.servers': os.environ.get('EC2_PUBLIC_IP', 'localhost') + ':9092',  # Update with your Kafka broker address
+    'bootstrap.servers': '43.205.25.254:9092',  # Update with your Kafka broker address
     'client.id': 'market_data_producer'
 }
 
@@ -57,7 +62,8 @@ soc = MDSocket_io(set_marketDataToken, set_muserID)
 
 # Instruments for subscribing
 Instruments = [
-    {'exchangeSegment': 2, 'exchangeInstrumentID': 61211}
+    {'exchangeSegment': 2, 'exchangeInstrumentID': 35089},
+    {'exchangeSegment': 2, 'exchangeInstrumentID': 35415}
 ]
 
 # Callback for connection
@@ -66,7 +72,7 @@ def on_connect():
     logger.info('Market Data Socket connected successfully!')
 
     # Subscribe to instruments
-    response = xt.send_subscription(Instruments, 1501)
+    response = xt.send_subscription(Instruments, 1512)
     logger.info("Subscription response: %s", response)
 
 # Callback on receiving message
@@ -77,72 +83,72 @@ def on_message(data):
 # Callback for message code 1501 FULL
 def on_message1501_json_full(data, topic_name = 'message1501_json_full'):
     produce_to_kafka(topic_name, str(data))
-    logger.info('I received a 1501 Touchline message!' + data)
+    logger.info('I received a 1501 Touchline message!')
 
 # Callback for message code 1502 FULL
 def on_message1502_json_full(data, topic_name = 'message1502_json_full'):
     produce_to_kafka(topic_name, str(data))
-    logger.info('I received a 1502 Market depth message!' + data)
+    logger.info('I received a 1502 Market depth message!')
 
 # Callback for message code 1505 FULL
 def on_message1505_json_full(data, topic_name = 'message1505_json_full'):
     produce_to_kafka(topic_name, str(data))
-    logger.info('I received a 1505 Candle data message!' + data)
+    logger.info('I received a 1505 Candle data message!')
 
 # Callback for message code 1507 FULL
 def on_message1507_json_full(data, topic_name = 'message1507_json_full'):
     produce_to_kafka(topic_name, str(data))
-    logger.info('I received a 1507 MarketStatus data message!' + data)
+    logger.info('I received a 1507 MarketStatus data message!')
 
 # Callback for message code 1510 FULL
 def on_message1510_json_full(data, topic_name = 'message1510_json_full'):
     produce_to_kafka(topic_name, str(data))
-    logger.info('I received a 1510 Open interest message!' + data)
+    logger.info('I received a 1510 Open interest message!')
 
 # Callback for message code 1512 FULL
 def on_message1512_json_full(data, topic_name = 'message1512_json_full'):
     produce_to_kafka(topic_name, str(data))
-    logger.info('I received a 1512 Level1,LTP message!' + data)
+    logger.info('I received a 1512 Level1,LTP message!')
 
 # Callback for message code 1105 FULL
 def on_message1105_json_full(data, topic_name = 'message1105_json_full'):
     produce_to_kafka(topic_name, str(data))
-    logger.info('I received a 1105, Instrument Property Change Event message!' + data)
+    logger.info('I received a 1105, Instrument Property Change Event message!')
 
 # Callback for message code 1105 FULL
 def on_message1105_json_partial(data, topic_name = 'message1105_json_partial'):
     produce_to_kafka(topic_name, str(data))
-    logger.info('I received a 1105, Instrument Property Change Event message!' + data)
+    logger.info('I received a 1105, Instrument Property Change Event message!')
 
 # Callback for message code 1501 PARTIAL
 def on_message1501_json_partial(data, topic_name = 'message1501_json_partial'):
     produce_to_kafka(topic_name, str(data))
-    logger.info('I received a 1501, Touchline Event message!' + data)
+    logger.info('I received a 1501, Touchline Event message!')
 
 # Callback for message code 1502 PARTIAL
 def on_message1502_json_partial(data, topic_name = 'message1502_json_partial'):
     produce_to_kafka(topic_name, str(data))
-    logger.info('I received a 1502 Market depth message!' + data)
+    logger.info('I received a 1502 Market depth message!')
 
 # Callback for message code 1505 PARTIAL
 def on_message1505_json_partial(data, topic_name = 'message1505_json_partial'):
     produce_to_kafka(topic_name, str(data))
-    logger.info('I received a 1505 Candle data message!' + data)
+    logger.info('I received a 1505 Candle data message!')
 
 # Callback for message code 1510 PARTIAL
 def on_message1510_json_partial(data, topic_name = 'message1510_json_partial'):
     produce_to_kafka(topic_name, str(data))
-    logger.info('I received a 1510 Open interest message!' + data)
+    logger.info('I received a 1510 Open interest message!')
 
 # Callback for message code 1512 PARTIAL
 def on_message1512_json_partial(data, topic_name = 'message1512_json_partial'):
     produce_to_kafka(topic_name, str(data))
-    logger.info('I received a 1512, LTP Event message!' + data)
+    logger.info('I received a 1512, LTP Event message!')
 
 # Callback for message code 1105 PARTIAL
 def on_message1105_json_partial(data, topic_name = 'message1105_json_partial'):
     produce_to_kafka(topic_name, str(data))
-    logger.info('I received a 1105, Instrument Property Change Event message!' + data)
+    logger.info('I received a 1105, Instrument Property Change Event message!')
 
 # Callback for disconnection
 def on_disconnect():
