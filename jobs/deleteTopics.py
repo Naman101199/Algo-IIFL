@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 # Initialize Admin Client
 admin_client = AdminClient({
-    'bootstrap.servers': os.environ.get('EC2_PUBLIC_IP', 'localhost') + ':9092'
+    'bootstrap.servers': '43.205.25.254:9092'
 })
 
 # Get a list of all topics

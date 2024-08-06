@@ -2,7 +2,7 @@ import sys
 import os
 from config import configuration
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
+import time
 from Connect import XTSConnect
 from datetime import datetime
 from config import configuration
@@ -19,12 +19,6 @@ exchange = [xt.EXCHANGE_NSEFO]
 master = xt.get_master(exchange)
 master = master['result']
 
-# with open("../Algo-IIFL/FO.txt", "w") as master_file:
-#     master_file.write(master)
-
-# master_df = pd.read_csv("../Algo-IIFL/FO.txt", sep = "|", usecols=range(19), header=None, low_memory=True)
-
-# Split the text into individual lines and remove any empty lines
 lines = [line for line in master.strip().split("\n")]
 
 # Split each line by the separator
@@ -70,4 +64,4 @@ def shift_columns(row):
 
 # Apply the function to each row in the dataframe
 df = df.apply(shift_columns, axis=1)
-df.to_csv('master.csv', header=False)
+print(df[df['ExchangeInstrumentID'].isin(['35089','35415'])])
