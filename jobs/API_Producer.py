@@ -1,13 +1,14 @@
 import sys
 import os
-from config import configuration
 import logging
 from datetime import datetime
 from confluent_kafka import Producer
+import json
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from Connect import XTSConnect
-from MarketDataSocketClient import MDSocket_io
+from utils.config import configuration
+from utils.Connect import XTSConnect
+from utils.MarketDataSocketClient import MDSocket_io
 
 # Configure logging to log to both console and file
 todays_date = str(datetime.today().date()).replace('-','_')
@@ -37,6 +38,10 @@ def produce_to_kafka(topic, value):
     producer.produce(topic, value=value, callback=delivery_report)
     producer.flush()
 
+# Function to append data to local file
+def append_to_local_file(file_name, data):
+    with open(file_name, 'a') as file:
+        file.write(json.dumps(data) + '\n')
 
 API_KEY = configuration['API_KEY']
 API_SECRET = configuration['API_SECRET']
@@ -108,6 +113,7 @@ def on_message1510_json_full(data, topic_name = 'message1510_json_full'):
 
 # Callback for message code 1512 FULL
 def on_message1512_json_full(data, topic_name = 'message1512_json_full'):
+    # append_to_local_file(f'data/{topic_name}/{todays_date}.json', data)
     produce_to_kafka(topic_name, str(data))
     logger.info('I received a 1512 Level1,LTP message!')
 
