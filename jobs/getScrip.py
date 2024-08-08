@@ -1,12 +1,11 @@
 import sys
 import os
-from config import configuration
+from datetime import datetime
+import pandas as pd
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import time
-from Connect import XTSConnect
-from datetime import datetime
-from config import configuration
-import pandas as pd
+from utils.Connect import XTSConnect
+from utils.config import configuration
 
 API_KEY = configuration['API_KEY']
 API_SECRET = configuration['API_SECRET']

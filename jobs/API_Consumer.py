@@ -1,9 +1,13 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json, col
 from pyspark.sql.types import StructType, StructField, IntegerType, DoubleType, StringType, LongType, TimestampType
-from config import configuration
 import logging
 from datetime import datetime
+
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.config import configuration
 
 # Configure logging
 todays_date = str(datetime.today().date()).replace('-','_')
@@ -19,8 +23,8 @@ logger = logging.getLogger(__name__)
 def main():
 
     topic_name = 'message1512_json_full'
-    checkpoint_folder = f's3a://algo-iifl/checkpoints/tick_data/{topic_name}/{todays_date}'
-    output_folder = f's3a://algo-iifl/data/{topic_name}/{todays_date}'
+    checkpoint_folder = f's3a://algo-iifl-mumbai/checkpoints/tick_data/{topic_name}/{todays_date}'
+    output_folder = f's3a://algo-iifl-mumbai/data/{topic_name}/{todays_date}'
 
     schema = StructType([
         StructField("MessageCode", IntegerType(), False),
