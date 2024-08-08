@@ -32,7 +32,7 @@ def ohlcDataFrame(xt, exchangeSegment, exchangeInstrumentIDs: list, startTime: s
         df = pd.DataFrame(rows, columns=columns)
         df['Timestamp'] = pd.to_datetime(df['Timestamp'], unit='s').dt.strftime('%H:%M')
         df['exchangeSegment'] = exchangeSegment
-        df['exchangeInstrumentID'] = exchangeInstrumentID
+        df['exchangeInstrumentID'] = int(exchangeInstrumentID)
 
         full_df = pd.concat([full_df, df], axis = 0)
 

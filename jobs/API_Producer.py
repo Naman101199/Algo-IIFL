@@ -85,7 +85,6 @@ def on_connect():
 def on_message(data):
     # produce_to_kafka(topic_name, str(data))
     logger.info('I received a message!')
-    append_to_local_file(f'data/{todays_date}.json', data)
 
 # Callback for message code 1501 FULL
 def on_message1501_json_full(data, topic_name = 'message1501_json_full'):
@@ -114,6 +113,7 @@ def on_message1510_json_full(data, topic_name = 'message1510_json_full'):
 
 # Callback for message code 1512 FULL
 def on_message1512_json_full(data, topic_name = 'message1512_json_full'):
+    # append_to_local_file(f'data/{topic_name}/{todays_date}.json', data)
     produce_to_kafka(topic_name, str(data))
     logger.info('I received a 1512 Level1,LTP message!')
 

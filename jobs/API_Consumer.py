@@ -69,6 +69,7 @@ def main():
                 .option('kafka.bootstrap.servers', '43.205.25.254:9092') \
                 .option('subscribe', topic) \
                 .option('startingOffsets', 'earliest') \
+                # .option('failOnDataLoss', 'false') \
                 .load() 
 
             schema_df = spark_df \

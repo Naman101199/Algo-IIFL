@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, from_unixtime, window, min, max, first, last, sum, from_unixtime, date_format
+from pyspark.sql import functions as F
 from datetime import datetime
 import sys
 import os
@@ -10,6 +11,7 @@ from utils.Connect import XTSConnect
 from utils.config import configuration
 from utils.getOHLC import ohlcDataFrame
 
+todays_date = str(datetime.today().date()).replace('-','_')
 # Market OHLC
 API_KEY = configuration['API_KEY']
 API_SECRET = configuration['API_SECRET']
@@ -20,12 +22,20 @@ response = xt.marketdata_login()
 
 exchangeSegment = xt.EXCHANGE_NSEFO
 exchangeInstrumentIDs = ['35089', '35415']
-startTime = 'Aug 7 2024 090000'
-endTime = 'Aug 7 2024 150000'
+startTime = 'Aug 8 2024 091500'
+endTime = 'Aug 8 2024 153000'
 compressionValue = 60
 
-df = ohlcDataFrame(xt, exchangeSegment, exchangeInstrumentIDs, startTime, endTime, compressionValue)
-print(df.head())
+api_ohlc = ohlcDataFrame(xt, exchangeSegment, exchangeInstrumentIDs, startTime, endTime, compressionValue)
+print(api_ohlc.head())
+print(api_ohlc.info())
+
+directory = f'/home/ec2-user/Algo-IIFL/data/{todays_date}'
+os.makedirs(directory, exist_ok=True)
+file_path = os.path.join(directory, 'api_ohlc.csv')
+
+api_ohlc.to_csv(file_path, index=False)
+
 
 # S3 OHLC
 spark = SparkSession.builder \
@@ -45,20 +55,24 @@ spark = SparkSession.builder \
 # S3 bucket and prefix
 bucket_name = "algo-iifl-mumbai"
 # todays_date = str(datetime.today().date()).replace('-','_')
-prefix = f"data/message1512_json_full/2024_08_07/"
+prefix = f"data/message1512_json_full/{todays_date}/"
 
 # Create the S3 path
 s3_path = f"s3a://{bucket_name}/{prefix}"
 
 # Read all parquet files from the S3 path
-df = spark.read.parquet(s3_path)
+s3_ohlc = spark.read.parquet(s3_path)
 
 # Cleaning timestamp
-df = df.withColumn("timestamp", from_unixtime(col("LastUpdateTime")))
-df = df.withColumn("timestamp", date_format(col("timestamp"), "HH:mm:ss"))
+# s3_ohlc = s3_ohlc.withColumn("timestamp", from_unixtime(col("LastUpdateTime")))
+# s3_ohlc = s3_ohlc.withColumn("timestamp", date_format(col("timestamp"), "HH:mm:ss"))
+s3_ohlc = s3_ohlc.withColumn("timestamp", F.from_unixtime(F.col("LastUpdateTime") + 315532800))
+s3_ohlc = s3_ohlc.withColumn("timestamp", F.date_trunc('minute', F.col("timestamp")))
+s3_ohlc = s3_ohlc.withColumn("timestamp", F.date_format(F.col("timestamp"), "HH:mm:ss"))
+# print(s3_ohlc.head())
 
 # Group data by 1-minute intervals and calculate OHLC values
-ohlc_df = df.groupBy(
+s3_ohlc = s3_ohlc.groupBy(
     col("ExchangeSegment"),
     col("ExchangeInstrumentID"),
     window(col("timestamp"), "1 minute")) \
@@ -71,18 +85,22 @@ ohlc_df = df.groupBy(
     ) \
     .select(
         col("ExchangeSegment"),
-        col("ExchangeInstrumentID"),
+        col("ExchangeInstrumentID").alias("exchangeInstrumentID"),
         col("window.start").alias("start_time"),
         col("window.end").alias("end_time"),
         "Open", "High", "Low", "Close", "Volume"
     )
 
 # Select and reorder columns to match the required format
-ohlc_df = ohlc_df.withColumn('Timestamp', date_format(col('end_time'), 'HH:mm'))
-ohlc_df = ohlc_df.select("ExchangeInstrumentID", "Timestamp", "Open", "High", "Low", "Close", "Volume")
+s3_ohlc = s3_ohlc.withColumn('Timestamp', date_format(col('end_time'), 'HH:mm'))
+s3_ohlc = s3_ohlc.select("exchangeInstrumentID", "Timestamp", "Open", "High", "Low", "Close", "Volume")
 
 # Show the dataframe schema and a few rows
-ohlc_df.printSchema()
-# ohlc_df.show(10)
-s3_ohlc = ohlc_df.toPandas()
+s3_ohlc.printSchema()
+# s3_ohlc = s3_ohlc.toPandas()
+columns = ["exchangeInstrumentID", "Timestamp", "Open", "High", "Low", "Close", "Volume"]
+s3_ohlc = pd.DataFrame.from_records(s3_ohlc.collect(), columns=columns)
 print(s3_ohlc.head())
+
+file_path = os.path.join(directory, 's3_ohlc.csv')
+s3_ohlc.to_csv(file_path, index = False)
