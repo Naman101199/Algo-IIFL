@@ -11,7 +11,7 @@ from utils.config import configuration
 
 # Configure logging
 todays_date = str(datetime.today().date()).replace('-','_')
-log_file = f'logs/consumer_{todays_date}.log'
+log_file = f'/home/ec2-user/Algo-IIFL/logs/consumer_{todays_date}.log'
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     handlers=[

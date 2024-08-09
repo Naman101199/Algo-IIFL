@@ -12,7 +12,7 @@ from utils.MarketDataSocketClient import MDSocket_io
 
 # Configure logging to log to both console and file
 todays_date = str(datetime.today().date()).replace('-','_')
-log_file = f'logs/producer_{todays_date}.log'
+log_file = f'/home/ec2-user/Algo-IIFL/logs/producer_{todays_date}.log'
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     handlers=[

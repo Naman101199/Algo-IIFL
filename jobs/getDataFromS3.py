@@ -55,7 +55,7 @@ spark = SparkSession.builder \
 # S3 bucket and prefix
 bucket_name = "algo-iifl-mumbai"
 # todays_date = str(datetime.today().date()).replace('-','_')
-prefix = f"data/message1512_json_full/{todays_date}/"
+prefix = f"data/message1512_json_full/{todays_date}"
 
 # Create the S3 path
 s3_path = f"s3a://{bucket_name}/{prefix}"

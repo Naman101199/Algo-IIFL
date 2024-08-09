@@ -1,3 +1,5 @@
+#!/home/ec2-user/myenv/bin/env python3
+
 import sys
 import os
 from datetime import datetime

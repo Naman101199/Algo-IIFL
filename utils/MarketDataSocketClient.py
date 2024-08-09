@@ -70,9 +70,9 @@ class MDSocket_io(socketio.Client):
 
         self.sid.on('disconnect', self.on_disconnect)
 
-        currDirMain = os.getcwd()
+        # currDirMain = os.getcwd()
         configParser = configparser.ConfigParser()
-        configFilePath = os.path.join(currDirMain, 'config.ini')
+        configFilePath = '/home/ec2-user/Algo-IIFL/utils/config.ini'
         configParser.read(configFilePath)
 
         self.port = configParser.get('root_url', 'root')
