@@ -26,42 +26,6 @@ def main():
     checkpoint_folder = f's3a://algo-kite/checkpoints/tick_data/{topic_name}/{todays_date}'
     output_folder = f's3a://algo-kite/data/{topic_name}/{todays_date}'
 
-#     schema = StructType([
-#     StructField("tradable", BooleanType(), False),
-#     StructField("mode", StringType(), False),
-#     StructField("instrument_token", LongType(), False),
-#     StructField("last_price", DoubleType(), False),
-#     StructField("last_traded_quantity", IntegerType(), False),
-#     StructField("average_traded_price", DoubleType(), False),
-#     StructField("volume_traded", LongType(), False),
-#     StructField("total_buy_quantity", LongType(), False),
-#     StructField("total_sell_quantity", LongType(), False),
-#     StructField("ohlc", StructType([
-#         StructField("open", DoubleType(), False),
-#         StructField("high", DoubleType(), False),
-#         StructField("low", DoubleType(), False),
-#         StructField("close", DoubleType(), False)
-#     ]), False),
-#     StructField("change", DoubleType(), False),
-#     StructField("last_trade_time", TimestampType(), False),
-#     StructField("oi", LongType(), False),
-#     StructField("oi_day_high", LongType(), False),
-#     StructField("oi_day_low", LongType(), False),
-#     StructField("exchange_timestamp", TimestampType(), False),
-#     StructField("depth", StructType([
-#         StructField("buy", StructType([
-#             StructField("quantity", IntegerType(), False),
-#             StructField("price", DoubleType(), False),
-#             StructField("orders", IntegerType(), False)
-#         ]), False),
-#         StructField("sell", StructType([
-#             StructField("quantity", IntegerType(), False),
-#             StructField("price", DoubleType(), False),
-#             StructField("orders", IntegerType(), False)
-#         ]), False)
-#     ]), False)
-# ])
-
     schema = StructType([
         StructField("tradable", BooleanType(), True),
         StructField("mode", StringType(), True),
