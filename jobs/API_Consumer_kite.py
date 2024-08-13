@@ -1,6 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json, col
-from pyspark.sql.types import StructType, StructField, IntegerType, DoubleType, StringType, LongType, TimestampType
+from pyspark.sql.types import StructType, StructField, BooleanType, DoubleType, IntegerType, LongType, StringType, TimestampType
 import logging
 from datetime import datetime
 
@@ -11,7 +11,7 @@ from utils.config import configuration
 
 # Configure logging
 todays_date = str(datetime.today().date()).replace('-','_')
-log_file = f'/home/ec2-user/Algo-IIFL/logs/consumer_{todays_date}.log'
+log_file = f'/home/ec2-user/Algo-IIFL/logs/consumer_kite_{todays_date}.log'
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     handlers=[
@@ -22,22 +22,57 @@ logger = logging.getLogger(__name__)
 
 def main():
 
-    topic_name = 'message1512_json_full'
-    checkpoint_folder = f's3a://algo-iifl-mumbai/checkpoints/tick_data/{topic_name}/{todays_date}'
-    output_folder = f's3a://algo-iifl-mumbai/data/{topic_name}/{todays_date}'
+    topic_name = 'kite'
+    checkpoint_folder = f's3a://algo-kite/checkpoints/tick_data/{topic_name}/{todays_date}'
+    output_folder = f's3a://algo-kite/data/{topic_name}/{todays_date}'
+
+#     schema = StructType([
+#     StructField("tradable", BooleanType(), False),
+#     StructField("mode", StringType(), False),
+#     StructField("instrument_token", LongType(), False),
+#     StructField("last_price", DoubleType(), False),
+#     StructField("last_traded_quantity", IntegerType(), False),
+#     StructField("average_traded_price", DoubleType(), False),
+#     StructField("volume_traded", LongType(), False),
+#     StructField("total_buy_quantity", LongType(), False),
+#     StructField("total_sell_quantity", LongType(), False),
+#     StructField("ohlc", StructType([
+#         StructField("open", DoubleType(), False),
+#         StructField("high", DoubleType(), False),
+#         StructField("low", DoubleType(), False),
+#         StructField("close", DoubleType(), False)
+#     ]), False),
+#     StructField("change", DoubleType(), False),
+#     StructField("last_trade_time", TimestampType(), False),
+#     StructField("oi", LongType(), False),
+#     StructField("oi_day_high", LongType(), False),
+#     StructField("oi_day_low", LongType(), False),
+#     StructField("exchange_timestamp", TimestampType(), False),
+#     StructField("depth", StructType([
+#         StructField("buy", StructType([
+#             StructField("quantity", IntegerType(), False),
+#             StructField("price", DoubleType(), False),
+#             StructField("orders", IntegerType(), False)
+#         ]), False),
+#         StructField("sell", StructType([
+#             StructField("quantity", IntegerType(), False),
+#             StructField("price", DoubleType(), False),
+#             StructField("orders", IntegerType(), False)
+#         ]), False)
+#     ]), False)
+# ])
 
     schema = StructType([
-        StructField("MessageCode", IntegerType(), False),
-        StructField("MessageVersion", IntegerType(), False),
-        StructField("ApplicationType", IntegerType(), False),
-        StructField("TokenID", IntegerType(), False),
-        StructField("ExchangeSegment", IntegerType(), False),
-        StructField("ExchangeInstrumentID", IntegerType(), False),
-        StructField("BookType", IntegerType(), False),
-        StructField("XMarketType", IntegerType(), False),
-        StructField("LastTradedPrice", DoubleType(), False),
-        StructField("LastTradedQunatity", IntegerType(), False),
-        StructField("LastUpdateTime", LongType(), False)
+        StructField("tradable", BooleanType(), True),
+        StructField("mode", StringType(), True),
+        StructField("instrument_token", LongType(), True),
+        StructField("last_price", DoubleType(), True),
+        StructField("last_traded_quantity", LongType(), True),
+        StructField("average_traded_price", DoubleType(), True),
+        StructField("volume_traded", LongType(), True),
+        StructField("total_buy_quantity", LongType(), True),
+        StructField("total_sell_quantity", LongType(), True),
+        StructField("change", DoubleType(), True)
     ])
 
     try:
