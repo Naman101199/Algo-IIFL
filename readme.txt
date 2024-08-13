@@ -31,5 +31,5 @@ ssh -T git@github.com
 git clone git@github.com:Naman101199/Algo-IIFL.git
 
 
-
-
+nohup python jobs/API_Producer.py >/dev/null 2>&1
+nohup python jobs/API_Consumer.py >/dev/null 2>&1
