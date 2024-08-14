@@ -51,7 +51,7 @@ kafka_config = {
 }
 
 # Create a Kafka producer
-producer = Producer(kafka_config)
+# producer = Producer(kafka_config)
 
 # Initialize KiteTicker
 kws = KiteTicker(KITE_API_KEY, KITE_ACCESS_KEY)
@@ -64,10 +64,11 @@ def on_ticks(ws, ticks, topic_name='kite'):
 
         ticks = ticks[0]
         del ticks['ohlc']
+        del ticks['depth']
         logger.info("Received ticks: {}".format(ticks))
 
         # Produce ticks to Kafka
-        produce_to_kafka(topic_name, str(ticks))
+        # produce_to_kafka(topic_name, str(ticks))
     else:
         logger.debug("No ticks received.")
 
@@ -78,7 +79,7 @@ def on_connect(ws, response):
     ws.subscribe(tokens)
 
     # Set Instruments to tick in `QUOTE` mode.
-    ws.set_mode(ws.MODE_QUOTE, tokens)
+    ws.set_mode(ws.MODE_FULL, tokens)
 
 def on_close(ws, code, reason):
     # On connection close stop the main loop

@@ -27,17 +27,22 @@ def main():
     output_folder = f's3a://algo-kite/data/{topic_name}/{todays_date}'
 
     schema = StructType([
-        StructField("tradable", BooleanType(), True),
-        StructField("mode", StringType(), True),
-        StructField("instrument_token", LongType(), True),
-        StructField("last_price", DoubleType(), True),
-        StructField("last_traded_quantity", LongType(), True),
-        StructField("average_traded_price", DoubleType(), True),
-        StructField("volume_traded", LongType(), True),
-        StructField("total_buy_quantity", LongType(), True),
-        StructField("total_sell_quantity", LongType(), True),
-        StructField("change", DoubleType(), True)
-    ])
+    StructField("tradable", BooleanType(), False),
+    StructField("mode", StringType(), False),
+    StructField("instrument_token", LongType(), False),
+    StructField("last_price", DoubleType(), False),
+    StructField("last_traded_quantity", IntegerType(), False),
+    StructField("average_traded_price", DoubleType(), False),
+    StructField("volume_traded", LongType(), False),
+    StructField("total_buy_quantity", LongType(), False),
+    StructField("total_sell_quantity", LongType(), False),
+    StructField("change", DoubleType(), False),
+    StructField("last_trade_time", TimestampType(), False),
+    StructField("oi", LongType(), False),
+    StructField("oi_day_high", LongType(), False),
+    StructField("oi_day_low", LongType(), False),
+    StructField("exchange_timestamp", TimestampType(), False)
+])
 
     try:
         spark = SparkSession.builder \
