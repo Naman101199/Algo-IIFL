@@ -11,7 +11,7 @@ from utils.config import configuration
 
 # Set up the logging configuration
 todays_date = str(datetime.today().date()).replace('-', '_')
-log_file = f'/home/ec2-user/Algo-IIFL/logs/producer_{todays_date}.log'
+log_file = f'/home/ec2-user/Algo-IIFL/logs/producer_kite_{todays_date}.log'
 logging.basicConfig(
     level=logging.DEBUG,  # Changed to DEBUG
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -24,6 +24,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 tokens = [8960002, 8982786]
+PUBLIC_IP = configuration.get("PUBLIC_IP")
 KITE_API_KEY = configuration.get("KITE_API_KEY")
 KITE_ACCESS_KEY = configuration.get("KITE_ACCESS_KEY")
 
@@ -46,12 +47,12 @@ def append_to_local_file(file_name, data):
 
 # Kafka configuration
 kafka_config = {
-    'bootstrap.servers': '43.205.25.254:9092',  # Update with your Kafka broker address
+    'bootstrap.servers': f'{PUBLIC_IP}:9092',  # Update with your Kafka broker address
     'client.id': 'market_data_producer'
 }
 
 # Create a Kafka producer
-# producer = Producer(kafka_config)
+producer = Producer(kafka_config)
 
 # Initialize KiteTicker
 kws = KiteTicker(KITE_API_KEY, KITE_ACCESS_KEY)
@@ -61,14 +62,12 @@ def on_ticks(ws, ticks, topic_name='kite'):
     # Check if the callback is getting called
     logger.debug("Entered on_ticks callback")
     if ticks:
-
         ticks = ticks[0]
         del ticks['ohlc']
         del ticks['depth']
         logger.info("Received ticks: {}".format(ticks))
-
         # Produce ticks to Kafka
-        # produce_to_kafka(topic_name, str(ticks))
+        produce_to_kafka(topic_name, str(ticks))
     else:
         logger.debug("No ticks received.")
 

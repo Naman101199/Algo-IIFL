@@ -19,6 +19,7 @@ logging.basicConfig(level=logging.INFO,
                         logging.StreamHandler()
                     ])
 logger = logging.getLogger(__name__)
+PUBLIC_IP = configuration.get("PUBLIC_IP")
 
 def main():
 
@@ -70,7 +71,7 @@ def main():
         try:
             spark_df = spark.readStream \
                 .format('kafka') \
-                .option('kafka.bootstrap.servers', '43.205.25.254:9092') \
+                .option('kafka.bootstrap.servers', f'{PUBLIC_IP}:9092') \
                 .option('subscribe', topic) \
                 .option('startingOffsets', 'earliest') \
                 .load() 
