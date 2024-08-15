@@ -70,8 +70,8 @@ def main():
                 .option('kafka.bootstrap.servers', f'{PUBLIC_IP}:9092') \
                 .option('subscribe', topic) \
                 .option('startingOffsets', 'earliest') \
+                .option('failOnDataLoss', 'false') \
                 .load() 
-                # .option('failOnDataLoss', 'false') \
 
             schema_df = spark_df \
                 .selectExpr("CAST(value AS STRING)")\

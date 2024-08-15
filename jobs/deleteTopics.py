@@ -1,7 +1,10 @@
 from confluent_kafka.admin import AdminClient
 import os
 import logging
+import sys
 from datetime import datetime
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.config import configuration
 
 todays_date = str(datetime.today().date()).replace('-','_')
 log_file = f'logs/producer_{todays_date}.log'

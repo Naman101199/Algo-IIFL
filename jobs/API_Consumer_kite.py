@@ -11,7 +11,7 @@ from utils.config import configuration
 
 # Configure logging
 todays_date = str(datetime.today().date()).replace('-','_')
-log_file = f'/home/ec2-user/Algo-IIFL/logs/consumer_kite_{todays_date}.log'
+log_file = f'/home/ec2-user/Algo-IIFL/logs/consumer_kite_mcx_{todays_date}.log'
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     handlers=[
@@ -23,12 +23,11 @@ PUBLIC_IP = configuration.get("PUBLIC_IP")
 
 def main():
 
-    topic_name = 'kite'
+    topic_name = 'mcx'
     checkpoint_folder = f's3a://algo-kite/checkpoints/tick_data/{topic_name}/{todays_date}'
     output_folder = f's3a://algo-kite/data/{topic_name}/{todays_date}'
 
     schema = StructType([
-    StructField("tradable", BooleanType(), False),
     StructField("mode", StringType(), False),
     StructField("instrument_token", LongType(), False),
     StructField("last_price", DoubleType(), False),
@@ -38,11 +37,11 @@ def main():
     StructField("total_buy_quantity", LongType(), False),
     StructField("total_sell_quantity", LongType(), False),
     StructField("change", DoubleType(), False),
-    StructField("last_trade_time", TimestampType(), False),
+    StructField("last_trade_time", StringType(), False),
     StructField("oi", LongType(), False),
     StructField("oi_day_high", LongType(), False),
     StructField("oi_day_low", LongType(), False),
-    StructField("exchange_timestamp", TimestampType(), False)
+    StructField("exchange_timestamp", StringType(), False)
 ])
 
     try:
@@ -81,8 +80,6 @@ def main():
                 .selectExpr("CAST(value AS STRING)")\
                 .select(from_json(col('value'), schema).alias('data'))\
                 .select("data.*")
-                # \
-                # .withWatermark('timestamp', '5 minutes')
 
             logging.info("kafka dataframe created successfully")
 
@@ -109,11 +106,12 @@ def main():
     logging.info("Streaming is being started...")
     try:
         tickerDf = read_kafka_topic(topic_name, schema)
+        # tickerDf.show()
 
         if tickerDf:
             streaming_query = streamWriter(tickerDf, checkpoint_folder, output_folder)
             streaming_query.awaitTermination()
-            logging.info("data inserted into s3")
+            logger.info("data inserted into s3")
         else:
             logger.error("Ticker dataframe is None. Exiting application.")
     except Exception as e:
