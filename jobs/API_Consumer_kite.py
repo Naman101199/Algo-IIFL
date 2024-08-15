@@ -23,7 +23,7 @@ PUBLIC_IP = configuration.get("PUBLIC_IP")
 
 def main():
 
-    topic_name = 'mcx'
+    topic_name = 'kite'
     checkpoint_folder = f's3a://algo-kite/checkpoints/tick_data/{topic_name}/{todays_date}'
     output_folder = f's3a://algo-kite/data/{topic_name}/{todays_date}'
 

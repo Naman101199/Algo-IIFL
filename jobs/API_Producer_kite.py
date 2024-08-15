@@ -23,9 +23,10 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-tokens = [109831431,110148615]
-topic_name= 'mcx'
-# [8960002, 8982786]
+tokens = [8960002, 8982786]
+topic_name= 'kite'
+# [109831431,110148615]
+
 PUBLIC_IP = configuration.get("PUBLIC_IP")
 KITE_API_KEY = configuration.get("KITE_API_KEY")
 KITE_ACCESS_KEY = configuration.get("KITE_ACCESS_KEY")
@@ -54,7 +55,7 @@ kafka_config = {
 }
 
 # Create a Kafka producer
-# producer = Producer(kafka_config)
+producer = Producer(kafka_config)
 
 # Initialize KiteTicker
 kws = KiteTicker(KITE_API_KEY, KITE_ACCESS_KEY)
@@ -73,7 +74,7 @@ def on_ticks(ws,ticks,topic_name = topic_name):
             ticks['exchange_timestamp'] = str(ticks['exchange_timestamp'])        
         logger.info("Received ticks: {}".format(ticks))
         # Produce ticks to Kafka
-        # produce_to_kafka(topic_name, str(ticks))
+        produce_to_kafka(topic_name, str(ticks))
     else:
         logger.debug("No ticks received.")
 
