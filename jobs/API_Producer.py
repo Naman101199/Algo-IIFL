@@ -43,13 +43,14 @@ def append_to_local_file(file_name, data):
     with open(file_name, 'a') as file:
         file.write(json.dumps(data) + '\n')
 
+PUBLIC_IP = configuration["PUBLIC_IP"]
 API_KEY = configuration['API_KEY']
 API_SECRET = configuration['API_SECRET']
 source = "WEBAPI"
 
 # Kafka configuration
 kafka_config = {
-    'bootstrap.servers': '43.205.25.254:9092',  # Update with your Kafka broker address
+    'bootstrap.servers': f'{PUBLIC_IP}:9092',  # Update with your Kafka broker address
     'client.id': 'market_data_producer'
 }
 

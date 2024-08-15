@@ -11,7 +11,7 @@ from utils.config import configuration
 
 # Configure logging
 todays_date = str(datetime.today().date()).replace('-','_')
-log_file = f'/home/ec2-user/Algo-IIFL/logs/consumer_kite_{todays_date}.log'
+log_file = f'/home/ec2-user/Algo-IIFL/logs/consumer_kite_mcx_{todays_date}.log'
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     handlers=[
@@ -19,61 +19,30 @@ logging.basicConfig(level=logging.INFO,
                         logging.StreamHandler()
                     ])
 logger = logging.getLogger(__name__)
+PUBLIC_IP = configuration.get("PUBLIC_IP")
 
 def main():
 
-    topic_name = 'kite'
+    topic_name = 'mcx'
     checkpoint_folder = f's3a://algo-kite/checkpoints/tick_data/{topic_name}/{todays_date}'
     output_folder = f's3a://algo-kite/data/{topic_name}/{todays_date}'
 
-#     schema = StructType([
-#     StructField("tradable", BooleanType(), False),
-#     StructField("mode", StringType(), False),
-#     StructField("instrument_token", LongType(), False),
-#     StructField("last_price", DoubleType(), False),
-#     StructField("last_traded_quantity", IntegerType(), False),
-#     StructField("average_traded_price", DoubleType(), False),
-#     StructField("volume_traded", LongType(), False),
-#     StructField("total_buy_quantity", LongType(), False),
-#     StructField("total_sell_quantity", LongType(), False),
-#     StructField("ohlc", StructType([
-#         StructField("open", DoubleType(), False),
-#         StructField("high", DoubleType(), False),
-#         StructField("low", DoubleType(), False),
-#         StructField("close", DoubleType(), False)
-#     ]), False),
-#     StructField("change", DoubleType(), False),
-#     StructField("last_trade_time", TimestampType(), False),
-#     StructField("oi", LongType(), False),
-#     StructField("oi_day_high", LongType(), False),
-#     StructField("oi_day_low", LongType(), False),
-#     StructField("exchange_timestamp", TimestampType(), False),
-#     StructField("depth", StructType([
-#         StructField("buy", StructType([
-#             StructField("quantity", IntegerType(), False),
-#             StructField("price", DoubleType(), False),
-#             StructField("orders", IntegerType(), False)
-#         ]), False),
-#         StructField("sell", StructType([
-#             StructField("quantity", IntegerType(), False),
-#             StructField("price", DoubleType(), False),
-#             StructField("orders", IntegerType(), False)
-#         ]), False)
-#     ]), False)
-# ])
-
     schema = StructType([
-        StructField("tradable", BooleanType(), True),
-        StructField("mode", StringType(), True),
-        StructField("instrument_token", LongType(), True),
-        StructField("last_price", DoubleType(), True),
-        StructField("last_traded_quantity", LongType(), True),
-        StructField("average_traded_price", DoubleType(), True),
-        StructField("volume_traded", LongType(), True),
-        StructField("total_buy_quantity", LongType(), True),
-        StructField("total_sell_quantity", LongType(), True),
-        StructField("change", DoubleType(), True)
-    ])
+    StructField("mode", StringType(), False),
+    StructField("instrument_token", LongType(), False),
+    StructField("last_price", DoubleType(), False),
+    StructField("last_traded_quantity", IntegerType(), False),
+    StructField("average_traded_price", DoubleType(), False),
+    StructField("volume_traded", LongType(), False),
+    StructField("total_buy_quantity", LongType(), False),
+    StructField("total_sell_quantity", LongType(), False),
+    StructField("change", DoubleType(), False),
+    StructField("last_trade_time", StringType(), False),
+    StructField("oi", LongType(), False),
+    StructField("oi_day_high", LongType(), False),
+    StructField("oi_day_low", LongType(), False),
+    StructField("exchange_timestamp", StringType(), False)
+])
 
     try:
         spark = SparkSession.builder \
@@ -101,7 +70,7 @@ def main():
         try:
             spark_df = spark.readStream \
                 .format('kafka') \
-                .option('kafka.bootstrap.servers', '43.205.25.254:9092') \
+                .option('kafka.bootstrap.servers', f'{PUBLIC_IP}:9092') \
                 .option('subscribe', topic) \
                 .option('startingOffsets', 'earliest') \
                 .load() 
@@ -111,8 +80,6 @@ def main():
                 .selectExpr("CAST(value AS STRING)")\
                 .select(from_json(col('value'), schema).alias('data'))\
                 .select("data.*")
-                # \
-                # .withWatermark('timestamp', '5 minutes')
 
             logging.info("kafka dataframe created successfully")
 
@@ -139,11 +106,12 @@ def main():
     logging.info("Streaming is being started...")
     try:
         tickerDf = read_kafka_topic(topic_name, schema)
+        # tickerDf.show()
 
         if tickerDf:
             streaming_query = streamWriter(tickerDf, checkpoint_folder, output_folder)
             streaming_query.awaitTermination()
-            logging.info("data inserted into s3")
+            logger.info("data inserted into s3")
         else:
             logger.error("Ticker dataframe is None. Exiting application.")
     except Exception as e:

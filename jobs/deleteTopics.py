@@ -1,7 +1,10 @@
 from confluent_kafka.admin import AdminClient
 import os
 import logging
+import sys
 from datetime import datetime
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from utils.config import configuration
 
 todays_date = str(datetime.today().date()).replace('-','_')
 log_file = f'logs/producer_{todays_date}.log'
@@ -12,10 +15,11 @@ logging.basicConfig(level=logging.INFO,
                         logging.StreamHandler()
                     ])
 logger = logging.getLogger(__name__)
+PUBLIC_IP = configuration.get("PUBLIC_IP")
 
 # Initialize Admin Client
 admin_client = AdminClient({
-    'bootstrap.servers': '43.205.25.254:9092'
+    'bootstrap.servers': f'{PUBLIC_IP}:9092'
 })
 
 # Get a list of all topics

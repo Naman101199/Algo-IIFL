@@ -3,7 +3,7 @@ from kiteconnect import KiteTicker, KiteConnect
 from datetime import datetime
 from confluent_kafka import Producer
 import json
-
+import time
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -11,7 +11,7 @@ from utils.config import configuration
 
 # Set up the logging configuration
 todays_date = str(datetime.today().date()).replace('-', '_')
-log_file = f'/home/ec2-user/Algo-IIFL/logs/producer_{todays_date}.log'
+log_file = f'/home/ec2-user/Algo-IIFL/logs/producer_kite_mcx_{todays_date}.log'
 logging.basicConfig(
     level=logging.DEBUG,  # Changed to DEBUG
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -23,7 +23,10 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-tokens = [8960002, 8982786]
+tokens = [109831431,110148615]
+topic_name= 'mcx'
+# [8960002, 8982786]
+PUBLIC_IP = configuration.get("PUBLIC_IP")
 KITE_API_KEY = configuration.get("KITE_API_KEY")
 KITE_ACCESS_KEY = configuration.get("KITE_ACCESS_KEY")
 
@@ -46,28 +49,31 @@ def append_to_local_file(file_name, data):
 
 # Kafka configuration
 kafka_config = {
-    'bootstrap.servers': '43.205.25.254:9092',  # Update with your Kafka broker address
+    'bootstrap.servers': f'{PUBLIC_IP}:9092',  # Update with your Kafka broker address
     'client.id': 'market_data_producer'
 }
 
 # Create a Kafka producer
-producer = Producer(kafka_config)
+# producer = Producer(kafka_config)
 
 # Initialize KiteTicker
 kws = KiteTicker(KITE_API_KEY, KITE_ACCESS_KEY)
 
 # Callback on receiving message
-def on_ticks(ws, ticks, topic_name='kite'):
+def on_ticks(ws,ticks,topic_name = topic_name):
     # Check if the callback is getting called
     logger.debug("Entered on_ticks callback")
     if ticks:
-
         ticks = ticks[0]
-        del ticks['ohlc']
+        if 'depth' in ticks.keys():
+            del ticks['ohlc']
+            del ticks['depth']
+            del ticks['tradable']
+            ticks['last_trade_time'] = str(ticks['last_trade_time'])
+            ticks['exchange_timestamp'] = str(ticks['exchange_timestamp'])        
         logger.info("Received ticks: {}".format(ticks))
-
         # Produce ticks to Kafka
-        produce_to_kafka(topic_name, str(ticks))
+        # produce_to_kafka(topic_name, str(ticks))
     else:
         logger.debug("No ticks received.")
 
@@ -78,18 +84,37 @@ def on_connect(ws, response):
     ws.subscribe(tokens)
 
     # Set Instruments to tick in `QUOTE` mode.
-    ws.set_mode(ws.MODE_QUOTE, tokens)
+    ws.set_mode(ws.MODE_FULL, tokens)
 
+# Callback when current connection is closed.
 def on_close(ws, code, reason):
-    # On connection close stop the main loop
-    logger.info(f'Connection closed: {code} - {reason}')
-    ws.stop()
+    logger.info("Connection closed: {code} - {reason}".format(code=code, reason=reason))
 
-# Assign the callbacks
+
+# Callback when connection closed with error.
+def on_error(ws, code, reason):
+    logger.info("Connection error: {code} - {reason}".format(code=code, reason=reason))
+
+
+# Callback when reconnect is on progress
+def on_reconnect(ws, attempts_count):
+    logger.info("Reconnecting: {}".format(attempts_count))
+
+
+# Callback when all reconnect failed (exhausted max retries)
+def on_noreconnect(ws):
+    logger.info("Reconnect failed.")
+
+
+# Assign the callbacks.
 kws.on_ticks = on_ticks
-kws.on_connect = on_connect
 kws.on_close = on_close
+kws.on_error = on_error
+kws.on_connect = on_connect
+kws.on_reconnect = on_reconnect
+kws.on_noreconnect = on_noreconnect
+
 
 # Infinite loop on the main thread. Nothing after this will run.
 # You have to use the pre-defined callbacks to manage subscriptions.
-response = kws.connect()
+kws.connect()
