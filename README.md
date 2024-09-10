@@ -41,14 +41,4 @@ To run this project, ensure you have the following installed:
 - AWS CLI (Configured with appropriate permissions)
 - Python 3.x (For additional scripts and automation)
 
-## Setup Instructions
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/harshitgurani/stock_market_data-stream.git
-   cd stock_market_data-stream
-
-
-
-
 
