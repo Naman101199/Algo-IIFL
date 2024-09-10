@@ -1,35 +1,42 @@
-docker compose up -d
-List topics: kafka-topics --list --bootstrap-server broker:29092 
-Consume data: kafka-console-consumer --topic market_data_topic --bootstrap-server broker:9092 --from-beginning
+# Real-Time Stock Market Data Processing with Apache Kafka, Spark, and AWS
 
+This project captures, processes, and analyzes real-time stock market data using a robust streaming architecture built on Apache Kafka, Apache Spark, Docker, and AWS services.
 
-Zookeeper: 2181
-Kafka: 9092, 9101
-Spark Master: 7077, 8080
+## Architecture Overview
 
+![image](https://github.com/user-attachments/assets/96206593-0f1c-4533-af70-d0737787d3fb)
 
-Type	Protocol	Port Range	Source
-Custom TCP Rule	TCP	2181	0.0.0.0/0
-Custom TCP Rule	TCP	9092	0.0.0.0/0
-Custom TCP Rule	TCP	9101	0.0.0.0/0
-Custom TCP Rule	TCP	7077	0.0.0.0/0
-Custom TCP Rule	TCP	8080	0.0.0.0/0
+### Components:
 
+1. **Data Source**:
+    - **IIFL Securities**: Real-time stock market data is sourced from IIFL Securities.
 
+2. **Streaming**:
+    - **Apache Kafka**: Used for building real-time data pipelines. Kafka captures the stock market tick data from IIFL Securities and streams it to Spark for processing.
+    - **Apache ZooKeeper**: Manages and coordinates Kafka brokers.
+    - **Apache Spark**: Distributed data processing engine that processes the real-time data. It consists of:
+      - **Master Node**: Coordinates the distributed computation across worker nodes.
+      - **Worker Nodes**: Execute tasks as part of the distributed processing.
 
-cd Downloads
-scp -i algo-test.pem ~/.ssh/id_rsa* ec2-user@ec2-3-145-188-59.us-east-2.compute.amazonaws.com:~/.ssh/
+3. **Deployment**:
+    - **Docker**: Containers are used to deploy and manage the Kafka, Zookeeper, and Spark clusters.
+    - **Amazon EC2**: Hosts the Docker containers and the entire streaming architecture in the cloud.
 
-ssh -i algo-test.pem ec2-user@ec2-3-145-188-59.us-east-2.compute.amazonaws.com
+4. **Data Storage and Analytics**:
+    - **AWS S3**: Processed data is stored in S3 buckets for persistence and further analysis.
+    - **AWS Glue**: Manages ETL (Extract, Transform, Load) processes to clean, transform, and prepare data for analysis.
+    - **AWS Athena**: Provides serverless interactive query services that analyze the data stored in S3 using standard SQL.
+    - **Amazon Redshift**: A data warehouse service where the processed data can be further analyzed and visualized.
 
-chmod 700 ~/.ssh
-chmod 600 ~/.ssh/id_rsa
-chmod 644 ~/.ssh/id_rsa.pub
+5. **Data Quality**:
+    - **AWS Glue DataBrew**: Ensures data quality by detecting and handling anomalies, missing values, and other data issues before they are ingested into Redshift.
 
-ssh -T git@github.com
+## Prerequisites
 
-git clone git@github.com:Naman101199/Algo-IIFL.git
+To run this project, ensure you have the following installed:
 
-
-nohup python jobs/API_Producer.py >/dev/null 2>&1
-nohup python jobs/API_Consumer.py >/dev/null 2>&1
+- Docker
+- Apache Kafka
+- Apache Spark
+- AWS CLI (Configured with appropriate permissions)
+- Python 3.x (For additional scripts and automation)
